@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ArticlesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,6 +24,21 @@ class Articles
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $prix = null;
+
+    #[ORM\OneToMany(mappedBy: 'fk_articles', targetEntity: Stockage::class, orphanRemoval: true)]
+    private Collection $stockages;
+
+    #[ORM\OneToMany(mappedBy: 'fk_articles', targetEntity: ArticleCommande::class)]
+    private Collection $articleCommandes;
+
+    #[ORM\ManyToOne(inversedBy: 'articles')]
+    private ?rayons $fk_rayons = null;
+
+    public function __construct()
+    {
+        $this->stockages = new ArrayCollection();
+        $this->articleCommandes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -60,6 +77,78 @@ class Articles
     public function setPrix(string $prix): static
     {
         $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Stockage>
+     */
+    public function getStockages(): Collection
+    {
+        return $this->stockages;
+    }
+
+    public function addStockage(Stockage $stockage): static
+    {
+        if (!$this->stockages->contains($stockage)) {
+            $this->stockages->add($stockage);
+            $stockage->setFkArticles($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStockage(Stockage $stockage): static
+    {
+        if ($this->stockages->removeElement($stockage)) {
+            // set the owning side to null (unless already changed)
+            if ($stockage->getFkArticles() === $this) {
+                $stockage->setFkArticles(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ArticleCommande>
+     */
+    public function getArticleCommandes(): Collection
+    {
+        return $this->articleCommandes;
+    }
+
+    public function addArticleCommande(ArticleCommande $articleCommande): static
+    {
+        if (!$this->articleCommandes->contains($articleCommande)) {
+            $this->articleCommandes->add($articleCommande);
+            $articleCommande->setFkArticles($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticleCommande(ArticleCommande $articleCommande): static
+    {
+        if ($this->articleCommandes->removeElement($articleCommande)) {
+            // set the owning side to null (unless already changed)
+            if ($articleCommande->getFkArticles() === $this) {
+                $articleCommande->setFkArticles(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getFkRayons(): ?rayons
+    {
+        return $this->fk_rayons;
+    }
+
+    public function setFkRayons(?rayons $fk_rayons): static
+    {
+        $this->fk_rayons = $fk_rayons;
 
         return $this;
     }
