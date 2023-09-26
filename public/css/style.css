@@ -5,6 +5,11 @@ body{
   font-family: 'Open Sans', sans-serif;
 }
 
+.Icon {
+  width : 30px;
+  height : 30px;
+}
+
 /* Barre de navigation */
 nav{
   color:#fff;
