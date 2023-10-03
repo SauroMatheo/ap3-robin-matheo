@@ -34,10 +34,14 @@ class Articles
     #[ORM\ManyToOne(inversedBy: 'articles')]
     private ?rayons $fk_rayons = null;
 
+    #[ORM\ManyToMany(targetEntity: Sport::class, mappedBy: 'lesarticles')]
+    private Collection $lessports;
+
     public function __construct()
     {
         $this->stockages = new ArrayCollection();
         $this->articleCommandes = new ArrayCollection();
+        $this->lessports = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -149,6 +153,33 @@ class Articles
     public function setFkRayons(?rayons $fk_rayons): static
     {
         $this->fk_rayons = $fk_rayons;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Sport>
+     */
+    public function getLessports(): Collection
+    {
+        return $this->lessports;
+    }
+
+    public function addLessport(Sport $lessport): static
+    {
+        if (!$this->lessports->contains($lessport)) {
+            $this->lessports->add($lessport);
+            $lessport->addLesarticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLessport(Sport $lessport): static
+    {
+        if ($this->lessports->removeElement($lessport)) {
+            $lessport->removeLesarticle($this);
+        }
 
         return $this;
     }
