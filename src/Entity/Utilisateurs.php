@@ -40,16 +40,17 @@ class Utilisateurs
     #[ORM\Column(length: 20)]
     private ?string $tel = null;
 
-    #[ORM\ManyToOne(inversedBy: 'responsable_legal')]
-    private ?Enfants $enfants = null;
-
     #[ORM\ManyToMany(targetEntity: Sport::class, mappedBy: 'utilisateurs')]
     private Collection $sports;
+
+    #[ORM\OneToMany(mappedBy: 'responsableLegal', targetEntity: Enfants::class)]
+    private Collection $lesEnfants;
 
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
         $this->sports = new ArrayCollection();
+        $this->lesEnfants = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -170,19 +171,7 @@ class Utilisateurs
 
         return $this;
     }
-
-    public function getEnfants(): ?Enfants
-    {
-        return $this->enfants;
-    }
-
-    public function setEnfants(?Enfants $enfants): static
-    {
-        $this->enfants = $enfants;
-
-        return $this;
-    }
-
+    
     /**
      * @return Collection<int, Sport>
      */
@@ -205,6 +194,36 @@ class Utilisateurs
     {
         if ($this->sports->removeElement($sport)) {
             $sport->removeUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Enfants>
+     */
+    public function getLesEnfants(): Collection
+    {
+        return $this->lesEnfants;
+    }
+
+    public function addLesEnfant(Enfants $lesEnfant): static
+    {
+        if (!$this->lesEnfants->contains($lesEnfant)) {
+            $this->lesEnfants->add($lesEnfant);
+            $lesEnfant->setResponsableLegal($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLesEnfant(Enfants $lesEnfant): static
+    {
+        if ($this->lesEnfants->removeElement($lesEnfant)) {
+            // set the owning side to null (unless already changed)
+            if ($lesEnfant->getResponsableLegal() === $this) {
+                $lesEnfant->setResponsableLegal(null);
+            }
         }
 
         return $this;
