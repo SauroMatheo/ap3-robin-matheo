@@ -40,9 +40,16 @@ class Utilisateurs
     #[ORM\Column(length: 20)]
     private ?string $tel = null;
 
+    #[ORM\ManyToOne(inversedBy: 'responsable_legal')]
+    private ?Enfants $enfants = null;
+
+    #[ORM\ManyToMany(targetEntity: Sport::class, mappedBy: 'utilisateurs')]
+    private Collection $sports;
+
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
+        $this->sports = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -160,6 +167,45 @@ class Utilisateurs
     public function setTel(string $tel): static
     {
         $this->tel = $tel;
+
+        return $this;
+    }
+
+    public function getEnfants(): ?Enfants
+    {
+        return $this->enfants;
+    }
+
+    public function setEnfants(?Enfants $enfants): static
+    {
+        $this->enfants = $enfants;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Sport>
+     */
+    public function getSports(): Collection
+    {
+        return $this->sports;
+    }
+
+    public function addSport(Sport $sport): static
+    {
+        if (!$this->sports->contains($sport)) {
+            $this->sports->add($sport);
+            $sport->addUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSport(Sport $sport): static
+    {
+        if ($this->sports->removeElement($sport)) {
+            $sport->removeUtilisateur($this);
+        }
 
         return $this;
     }
