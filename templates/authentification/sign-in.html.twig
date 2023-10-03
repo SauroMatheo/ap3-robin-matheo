@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AuthentificationController!{% endblock %}
+
+{% block body %}
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <title> Inscription </title>
+    <link href="{{ asset('css/inscription.css') }}" rel="stylesheet"/>
+</head>
+
+<body>
+         <p> Inscription </p>
+    <br>
+
+    <label for="nom"> Nom : </label>
+    <input type="text" required id="nom" name="nom"> <br> <br>
+
+    <label for="prenom"> Prénom : </label>
+    <input type="text" required id="prenom" name="prenom"> <br> <br>
+
+    <label for="mail"> Adresse e-mail : </label>
+    <input type="text" required id="mail" name="login"> <br> <br>
+
+
+    <label for="mdp"> Mot de passe : </label>
+    <input type="password" required id="mdp" name="mdp"> <br> <br>
+
+    <label for="validmdp"> Validez votre mot de passe : </label>
+    <input type="password" required id="validmdp" name="validmdp"> <br>
+
+    <br>
+    <input type="submit" value="S'inscire">
+    </body>
+{% endblock %}
