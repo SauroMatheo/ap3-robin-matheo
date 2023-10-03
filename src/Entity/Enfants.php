@@ -18,8 +18,8 @@ class Enfants
     #[ORM\Column]
     private ?int $age = null;
 
-    #[ORM\OneToMany(mappedBy: 'enfants', targetEntity: Utilisateurs::class)]
-    private Collection $responsable_legal;
+    #[ORM\ManyToOne(inversedBy: 'lesEnfants')]
+    private ?Utilisateurs $responsableLegal = null;
 
     public function __construct()
     {
@@ -43,32 +43,14 @@ class Enfants
         return $this;
     }
 
-    /**
-     * @return Collection<int, Utilisateurs>
-     */
-    public function getResponsableLegal(): Collection
+    public function getResponsableLegal(): ?Utilisateurs
     {
-        return $this->responsable_legal;
+        return $this->responsableLegal;
     }
 
-    public function addResponsableLegal(Utilisateurs $responsableLegal): static
+    public function setResponsableLegal(?Utilisateurs $responsableLegal): static
     {
-        if (!$this->responsable_legal->contains($responsableLegal)) {
-            $this->responsable_legal->add($responsableLegal);
-            $responsableLegal->setEnfants($this);
-        }
-
-        return $this;
-    }
-
-    public function removeResponsableLegal(Utilisateurs $responsableLegal): static
-    {
-        if ($this->responsable_legal->removeElement($responsableLegal)) {
-            // set the owning side to null (unless already changed)
-            if ($responsableLegal->getEnfants() === $this) {
-                $responsableLegal->setEnfants(null);
-            }
-        }
+        $this->responsableLegal = $responsableLegal;
 
         return $this;
     }
