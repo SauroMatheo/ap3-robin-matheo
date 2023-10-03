@@ -4,6 +4,50 @@
 
 {% block body %}
 <div class="articles">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/article.css') }}" rel="stylesheet"/>
+    <div class="contours">
+        <div class="left">
+            <div class="big-img">
+                <img src="../image/logo.jpg" alt="Produit_Image_1">
+            </div>
+            <div class="images">
+                <div class="small-img">
+                <img src="../image/logo.jpg" onclick="showImg(this.src)">
+                </div>
+                <div class="small-img">
+                <img src="../image/logo.jpg" onclick="showImg(this.src)">
+                </div>
+                <div class="small-img">
+                <img src="../image/logo.jpg" onclick="showImg(this.src)">
+                </div>
+                <div class="small-img">
+                <img src="../image/logo.jpg" onclick="showImg(this.src)">
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <br>
+            <div class="url">Accueil > Produit</div>
+            <div class="pname">(Nom)</div>
+            <p>(Référence)</p>
+            <p>(Description)</p>
+            <p>(Fournisseur {Nom})</p>
+            <p>(Rayon)</p>
+            <div class="price">(Coût Unitaire HT) / (Coût lot TTC) €</div>
+            <div class="quantity">
+                <p>Quantité (Internet) :</p>
+                <input type="number" min="1" max="5" value="1">
+            </div>
+            <div class="quantity">
+                <p>Quantité (Stock/Magasin) :</p>
+                <input type="number" min="1" max="5" value="1">
+            </div>
+            <div class="price">(Lieu Stockage)</div>
+            <div class="btn-box">
+                <button class="cart-btn">Ajouter la carte</button>
+                <button class="buy-btn">Acheter</button>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
