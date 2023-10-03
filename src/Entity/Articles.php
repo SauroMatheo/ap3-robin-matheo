@@ -23,7 +23,7 @@ class Articles
     private ?string $description = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
-    private ?string $prix = null;
+    private ?string $prixuniht = null;
 
     #[ORM\OneToMany(mappedBy: 'fk_articles', targetEntity: Stockage::class, orphanRemoval: true)]
     private Collection $stockages;
@@ -34,10 +34,22 @@ class Articles
     #[ORM\ManyToOne(inversedBy: 'articles')]
     private ?rayons $fk_rayons = null;
 
+    #[ORM\ManyToMany(targetEntity: Sport::class, mappedBy: 'lesarticles')]
+    private Collection $lessports;
+
+    #[ORM\ManyToOne(inversedBy: 'lesArticles')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Fournisseur $leFournisseur = null;
+
+    #[ORM\OneToMany(mappedBy: 'lArticle', targetEntity: ImageArticle::class)]
+    private Collection $lesImages;
+
     public function __construct()
     {
         $this->stockages = new ArrayCollection();
         $this->articleCommandes = new ArrayCollection();
+        $this->lessports = new ArrayCollection();
+        $this->lesImages = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -69,14 +81,14 @@ class Articles
         return $this;
     }
 
-    public function getPrix(): ?string
+    public function getPrixUniHT(): ?string
     {
-        return $this->prix;
+        return $this->prixunitht;
     }
 
-    public function setPrix(string $prix): static
+    public function setPrixUniHT(string $prixuniht): static
     {
-        $this->prix = $prix;
+        $this->prixuniht = $prixuniht;
 
         return $this;
     }
@@ -149,6 +161,75 @@ class Articles
     public function setFkRayons(?rayons $fk_rayons): static
     {
         $this->fk_rayons = $fk_rayons;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Sport>
+     */
+    public function getLessports(): Collection
+    {
+        return $this->lessports;
+    }
+
+    public function addLessport(Sport $lessport): static
+    {
+        if (!$this->lessports->contains($lessport)) {
+            $this->lessports->add($lessport);
+            $lessport->addLesarticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLessport(Sport $lessport): static
+    {
+        if ($this->lessports->removeElement($lessport)) {
+            $lessport->removeLesarticle($this);
+        }
+
+        return $this;
+    }
+
+    public function getLeFournisseur(): ?Fournisseur
+    {
+        return $this->leFournisseur;
+    }
+
+    public function setLeFournisseur(?Fournisseur $leFournisseur): static
+    {
+        $this->leFournisseur = $leFournisseur;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ImageArticle>
+     */
+    public function getLesImages(): Collection
+    {
+        return $this->lesImages;
+    }
+
+    public function addLesImage(ImageArticle $lesImage): static
+    {
+        if (!$this->lesImages->contains($lesImage)) {
+            $this->lesImages->add($lesImage);
+            $lesImage->setLArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLesImage(ImageArticle $lesImage): static
+    {
+        if ($this->lesImages->removeElement($lesImage)) {
+            // set the owning side to null (unless already changed)
+            if ($lesImage->getLArticle() === $this) {
+                $lesImage->setLArticle(null);
+            }
+        }
 
         return $this;
     }
