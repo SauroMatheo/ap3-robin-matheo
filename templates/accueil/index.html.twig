@@ -4,7 +4,7 @@
 
 {% block body %}
 <div class="all4sport">
-  <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
+  <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
 
   <!-- Barre de navigation -->
   <nav>
@@ -18,18 +18,19 @@
       <form>
         <input type="search" placeholder="Rechercher">
       </form>
-      
-      <p><a href="/profil"><img class="Icon" src="{{ asset('image/iconUser.png') }}" alt="Profile"/></a></p>
-      <p><a href="/panier"><img class="Icon" src="{{ asset('image/iconShop.png') }}" alt="Panier"/></a></p>
+
+      <p><a href="/profil"><img class="Icon" src="{{ asset('image/iconUser.png') }}" alt="Profile" /></a></p>
+      <p><a href="/panier"><img class="Icon" src="{{ asset('image/iconShop.png') }}" alt="Panier" /></a></p>
     </div>
   </nav>
   <!-- Fin de la barre de navigation -->
 
   <!-- Accueil -->
-   <header>
-     <h1>Ne soyez pas modo discord, faites du sport !</h1>
-     <button>Naviguer <i class="fas fa-paper-plane"></i></button>
-   </header>
+  <header>
+    <h1> All4Sport</h1>
+
+    <button>Naviguer <i class="fas fa-paper-plane"></i></button>
+  </header>
   <!-- Fin de Accueil -->
 
   <!-- Section principale -->
@@ -40,18 +41,21 @@
     <div class="Introduction">
       <h1>Introduction</h1>
       <br>
-      <p>All4Sport est une entreprise française de grande distribution de sport et de loisirs, créée en 1976 par Michel Leclercq. Le groupe All4Sport n'est pas coté en bourse, mais détenu par un actionnariat familial composé de trois collèges : la famille de l'ex-président fondateur, des salariés et la famille Mulliez.</p>
+      <p>All4Sport est une entreprise française de grande distribution de sport et de loisirs, créée en 1976 par Michel
+        Leclercq. Le groupe All4Sport n'est pas coté en bourse, mais détenu par un actionnariat familial composé de
+        trois collèges : la famille de l'ex-président fondateur, des salariés et la famille Mulliez.</p>
       <br>
     </div>
 
     <!-- Fin de Introduction -->
-    
+
     <!-- Tout les Articles -->
-    
+
     <div class="Articles">
-      
+
       <div class="card">
-        <a href="/articles"><img src="https://static.nike.com/a/images/f_auto/q_auto:eco/t_PDP_864_v1/0697fd03-09fd-4b3b-be0b-11b009c671d9/short-en-molleton-sportswear-pour-z5Kgjx.jpg"></a>
+        <a href="/articles"><img
+            src="https://static.nike.com/a/images/f_auto/q_auto:eco/t_PDP_864_v1/0697fd03-09fd-4b3b-be0b-11b009c671d9/short-en-molleton-sportswear-pour-z5Kgjx.jpg"></a>
         <div class="card-header">
           <h4 class="title">Short Nike</h4>
           <h4 class="price">199€</h4>
@@ -60,9 +64,10 @@
           <p>Short moulant pour homme</p>
         </div>
       </div>
-      
+
       <div class="card">
-        <a href="/articles"><img src="https://static.nike.com/a/images/f_auto/q_auto:eco/t_PDP_864_v1/eric5lwitzffpoisq0rj/chaussure-blazer-mid-77-vintage-pour-pMfjs8.jpg"></a>
+        <a href="/articles"><img
+            src="https://static.nike.com/a/images/f_auto/q_auto:eco/t_PDP_864_v1/eric5lwitzffpoisq0rj/chaussure-blazer-mid-77-vintage-pour-pMfjs8.jpg"></a>
         <div class="card-header">
           <h4 class="title">Paire de chaussures stylées</h4>
           <h4 class="price">69€</h4>
@@ -71,9 +76,10 @@
           <p>Des paires de chaussures stylées pour femme</p>
         </div>
       </div>
-      
+
       <div class="card">
-        <a href="/articles"><img src="https://static.nike.com/a/images/f_auto/q_auto:eco/t_PDP_864_v1/abb537eb-0e70-4e1f-903e-ec46b8657c0d/short-de-training-en-tissu-fleece-dri-fit-pour-n97b2F.jpg"></a>
+        <a href="/articles"><img
+            src="https://static.nike.com/a/images/f_auto/q_auto:eco/t_PDP_864_v1/abb537eb-0e70-4e1f-903e-ec46b8657c0d/short-de-training-en-tissu-fleece-dri-fit-pour-n97b2F.jpg"></a>
         <div class="card-header">
           <h4 class="title">Short pour courir</h4>
           <h4 class="price">39€</h4>
@@ -82,10 +88,10 @@
           <p>Sport pour courir en plain air pour homme</p>
         </div>
       </div>
-      
-     </div>
+
+    </div>
     <!-- Fin de tout les Articles -->
-    
+
     <!-- Magasin -->
     <div class="Magasin">
       <iframe src="https://www.youtube.com/embed/2COSkxxOtXY" allowfullscreen></iframe>
@@ -97,20 +103,27 @@
     <div class="Commentaire">
       <h1>Commentaire</h1>
       <br>
-      <p>/////////////////</p>
-      <p>/////////////////</p>
-      <p>/////////////////</p>
-      <p>/////////////////</p>
-      <p>/////////////////</p>
-      <p>/////////////////</p>
-      <p>/////////////////</p>
-      <p>/////////////////</p>
+
+      <label for="pseudo"> Nom d'utilisateur : </label>
+      <input type="text" required id="pseudo" name="pseudo"> <br>
+
+
+      <label for="sujet"> Sujet : </label>
+      <input type="text" required id="sujet" name="sujet"> <br>
+
+      <textarea name="comment" id="comment" cols="30" rows="5">
+
+        </textarea>
+
+      <br>
+      <input type="submit" value="Envoyer">
+
     </div>
-    
+
     <!-- Fin de Commentaire -->
   </section>
   <!-- Fin de la section principale -->
-  
+
   <!-- Pied de page -->
   <footer>
     <p>&copy; Contactez-nous au 07 83 08 30 19</p>
