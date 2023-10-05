@@ -19,11 +19,11 @@ class ArticleCommande
 
     #[ORM\ManyToOne(inversedBy: 'articleCommandes')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?articles $fk_articles = null;
+    private ?Articles $fk_articles = null;
 
     #[ORM\ManyToOne(inversedBy: 'articleCommandes')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?commandes $fk_commande = null;
+    private ?Commandes $fk_commande = null;
 
     public function getId(): ?int
     {
@@ -42,24 +42,24 @@ class ArticleCommande
         return $this;
     }
 
-    public function getFkArticles(): ?articles
+    public function getFkArticles(): ?Articles
     {
         return $this->fk_articles;
     }
 
-    public function setFkArticles(?articles $fk_articles): static
+    public function setFkArticles(?Articles $fk_articles): static
     {
         $this->fk_articles = $fk_articles;
 
         return $this;
     }
 
-    public function getFkCommande(): ?commandes
+    public function getFkCommande(): ?Commandes
     {
         return $this->fk_commande;
     }
 
-    public function setFkCommande(?commandes $fk_commande): static
+    public function setFkCommande(?Commandes $fk_commande): static
     {
         $this->fk_commande = $fk_commande;
 

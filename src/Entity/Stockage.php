@@ -19,11 +19,11 @@ class Stockage
 
     #[ORM\ManyToOne(inversedBy: 'stockages')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?articles $fk_articles = null;
+    private ?Articles $fk_articles = null;
 
     #[ORM\ManyToOne(inversedBy: 'stockages')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?magasins $fk_magasins = null;
+    private ?Magasins $fk_magasins = null;
 
     public function getId(): ?int
     {
@@ -42,24 +42,24 @@ class Stockage
         return $this;
     }
 
-    public function getFkArticles(): ?articles
+    public function getFkArticles(): ?Articles
     {
         return $this->fk_articles;
     }
 
-    public function setFkArticles(?articles $fk_articles): static
+    public function setFkArticles(?Articles $fk_articles): static
     {
         $this->fk_articles = $fk_articles;
 
         return $this;
     }
 
-    public function getFkMagasins(): ?magasins
+    public function getFkMagasins(): ?Magasins
     {
         return $this->fk_magasins;
     }
 
-    public function setFkMagasins(?magasins $fk_magasins): static
+    public function setFkMagasins(?Magasins $fk_magasins): static
     {
         $this->fk_magasins = $fk_magasins;
 

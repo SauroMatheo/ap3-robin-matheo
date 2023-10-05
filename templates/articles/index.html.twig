@@ -28,12 +28,12 @@
         <div class="right">
             <br>
             <div class="url">Accueil > Produit</div>
-            <div class="pname">(Nom)</div>
-            <p>(Référence)</p>
-            <p>(Description)</p>
-            <p>(Fournisseur {Nom})</p>
-            <p>(Rayon)</p>
-            <div class="price">(Coût Unitaire HT) / (Coût lot TTC) €</div>
+            <div class="pname"> {{ article.nom }} </div>
+            <p>Référence: {{ reference }}</p>
+            <p>{{ article.description }}</p>
+            <p>(Fournisseur: {{ article.leFournisseur.nom }})</p>
+            <p>{{ article.fkrayons.nom }}</p>
+            <div class="price">{{ prixttc }}€ ({{ prixht }}€ HT)</div> <!-- >article.prixuniht</!-->
             <div class="quantity">
                 <p>Quantité (Internet) :</p>
                 <input type="number" min="1" max="5" value="1">
