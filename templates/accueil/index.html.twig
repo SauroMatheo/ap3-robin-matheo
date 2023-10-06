@@ -49,39 +49,19 @@
     <!-- Tout les Articles -->
     
     <div class="Articles">
-      
-      <div class="card">
-        <a href="{{ path('app_articles', {id: 1}) }}"><img src="https://static.nike.com/a/images/f_auto/q_auto:eco/t_PDP_864_v1/0697fd03-09fd-4b3b-be0b-11b009c671d9/short-en-molleton-sportswear-pour-z5Kgjx.jpg"></a>
-        <div class="card-header">
-          <h4 class="title">Short Nike</h4>
-          <h4 class="price">199€</h4>
+
+      {% for article in articles %}
+        <div class="card">
+          <a href="{{ path('app_articles', {id: 1}) }}"><img src="{{ asset( 'image/articles/' ~ article.lesImages[0].lienImage ) }}"></a>
+          <div class="card-header">
+            <h4 class="title">{{ article.nom }}</h4>
+            <h4 class="price">{{ (article.prixUniHt * 1.2) | round(2) }}€</h4>
+          </div>
+          <div class="card-body">
+            <p>{{ article.description }}</p>
+          </div>
         </div>
-        <div class="card-body">
-          <p>Short moulant pour homme</p>
-        </div>
-      </div>
-      
-      <div class="card">
-        <a href="{{ path('app_articles', {id: 2}) }}"><img src="https://static.nike.com/a/images/f_auto/q_auto:eco/t_PDP_864_v1/eric5lwitzffpoisq0rj/chaussure-blazer-mid-77-vintage-pour-pMfjs8.jpg"></a>
-        <div class="card-header">
-          <h4 class="title">Paire de chaussures stylées</h4>
-          <h4 class="price">69€</h4>
-        </div>
-        <div class="card-body">
-          <p>Des paires de chaussures stylées pour femme</p>
-        </div>
-      </div>
-      
-      <div class="card">
-        <a href="{{ path('app_articles', {id: 3}) }}"><img src="https://static.nike.com/a/images/f_auto/q_auto:eco/t_PDP_864_v1/abb537eb-0e70-4e1f-903e-ec46b8657c0d/short-de-training-en-tissu-fleece-dri-fit-pour-n97b2F.jpg"></a>
-        <div class="card-header">
-          <h4 class="title">Short pour courir</h4>
-          <h4 class="price">39€</h4>
-        </div>
-        <div class="card-body">
-          <p>Sport pour courir en plain air pour homme</p>
-        </div>
-      </div>
+      {% endfor %}
       
      </div>
     <!-- Fin de tout les Articles -->

@@ -21,6 +21,18 @@ class ArticlesRepository extends ServiceEntityRepository
         parent::__construct($registry, Articles::class);
     }
 
+   /**
+    * @return Articles[] Returns an array of Articles objects
+    */
+   public function findLimit($limit): array
+   {
+       return $this->createQueryBuilder('a')
+           ->setMaxResults($limit)
+           ->getQuery()
+           ->getResult()
+       ;
+   }
+
 //    /**
 //     * @return Articles[] Returns an array of Articles objects
 //     */
