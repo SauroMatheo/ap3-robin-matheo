@@ -21,6 +21,20 @@ class ImageArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, ImageArticle::class);
     }
 
+    /**
+    * @return ImageArticle[] Returns an array of Articles objects
+    */
+    public function findImagesById($id, $limit): array
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.lArticle = :id')
+            ->setParameter('id', $id)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return ImageArticle[] Returns an array of ImageArticle objects
 //     */

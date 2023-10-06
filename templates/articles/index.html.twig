@@ -8,21 +8,14 @@
     <div class="contours">
         <div class="left">
             <div class="big-img">
-                <img src="../image/logo.jpg" alt="Produit_Image_1">
+                <img src="{{ asset( 'image/articles/' ~ images[0].lienImage ) }}" alt="Image Principale Produit"> <!-- TODO: Changer pour le nom du produit -->
             </div>
             <div class="images">
-                <div class="small-img">
-                <img src="../image/logo.jpg" onclick="showImg(this.src)">
-                </div>
-                <div class="small-img">
-                <img src="../image/logo.jpg" onclick="showImg(this.src)">
-                </div>
-                <div class="small-img">
-                <img src="../image/logo.jpg" onclick="showImg(this.src)">
-                </div>
-                <div class="small-img">
-                <img src="../image/logo.jpg" onclick="showImg(this.src)">
-                </div>
+                {% for image in images[1:] %}
+                    <div class="small-img">
+                        <img src="{{ asset( 'image/articles/' ~ image.lienImage ) }}" alt="Produit Image">
+                    </div>
+                {% endfor %}
             </div>
         </div>
         <div class="right">
@@ -35,8 +28,7 @@
             <p>{{ article.fkrayons.nom }}</p>
             <div class="price">{{ prixttc }}€ ({{ prixht }}€ HT)</div> <!-- >article.prixuniht</!-->
             <div class="quantity">
-                <p>Quantité (Internet) :</p>
-                <input type="number" min="1" max="5" value="1">
+                <p>Quantité (Internet) : {{ stockinternet }}</p>
             </div>
             <div class="quantity">
                 <p>Quantité (Stock/Magasin) :</p>

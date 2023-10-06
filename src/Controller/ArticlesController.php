@@ -7,17 +7,24 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 use App\Repository\ArticlesRepository;
+use App\Repository\ImageArticleRepository;
+use App\Repository\StockageRepository;
 
 use App\Entity\Rayons;
 
 class ArticlesController extends AbstractController
 {
     #[Route('/articles', name: 'app_articles')]
-    public function index(ArticlesRepository $articleRepository): Response
+    public function index(ArticlesRepository $articleRepository, ImageArticleRepository $imageRepository, StockageRepository $stockageRepository): Response
     {
         $id = $_GET['id'];
         
         $article = $articleRepository->find($id);
+
+        if ($article == null) {
+            // TODO: Page d'erreur
+            return $this->render('accueil/index.html.twig');
+        }
 
         $prixht = floatval(str_replace(',', '.', $article->getPrixUniHT()));
         $prixttc = round($prixht * 1.2, 2);
@@ -28,11 +35,22 @@ class ArticlesController extends AbstractController
         $ray = str_replace(" ", "", $article->getFkRayons()->getNom());
         $reference = substr($fou, 0, 3).substr($ray, 0, 3).sprintf("%012d", $id);
 
+        $images = $imageRepository->findImagesById($id, 5);
+
+        $stockinternet = $stockageRepository->findByArticle($id);
+        if (count($stockinternet) < 1) {
+            $stockinternet = $stockinternet[0]->getQuantite();
+        } else {
+            $stockinternet = $stockinternet[0]->getQuantite();
+        }
+
         return $this->render('articles/index.html.twig', [
             'article' => $article,
             'prixht' => $prixht,
             'prixttc' => $prixttc,
-            'reference' => $reference
+            'reference' => $reference,
+            'images' => $images,
+            'stockinternet' => $stockinternet
         ]);
     }
 }
