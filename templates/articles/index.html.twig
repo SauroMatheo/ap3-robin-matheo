@@ -13,7 +13,7 @@
         <form>
             <input type="search" placeholder="Rechercher">
         </form>
-        
+
         <p><a href="/register"><img class="Icon" src="{{ asset('image/iconUser.png') }}" alt="Profile"/></a></p>
         <p><a href="/panier"><img class="Icon" src="{{ asset('image/iconShop.png') }}" alt="Panier"/></a></p>
     </div>
@@ -22,45 +22,38 @@
     <link href="{{ asset('css/article.css') }}" rel="stylesheet"/>
     <div class="contours">
         <div class="flex-box">
-            <div class="left">
-                <div class="big-img">
-                    <img src="../image/articles/sneakers1.png" alt="Produit_Image_1">
-                </div>
-                <div class="images">
-                    <div class="small-img">
-                        <img src="../image/articles/sneakers1.png" onclick="showImg(this.src)">
-                    </div>
-                    <div class="small-img">
-                        <img src="../image/articles/sneakers1.png" onclick="showImg(this.src)">
-                    </div>
-                    <div class="small-img">
-                        <img src="../image/articles/sneakers1.png" onclick="showImg(this.src)">
-                    </div>
-                    <div class="small-img">
-                        <img src="../image/articles/sneakers1.png" onclick="showImg(this.src)">
-                    </div>
-                </div>
-            </div>
-            <div class="right">
-                <br>
-                <div class="pname">(Nom)</div>
-                <p>(Référence)</p>
-                <p>(Description)</p>
-                <p>(Fournisseur {Nom})</p>
-                <p>(Rayon)</p>
-                <div class="price">(Coût Unitaire HT) / (Coût lot TTC) €</div>
-                <div class="quantity">
-                    <p>Quantité (Internet) :</p>
-                    <input type="number" min="1" max="5" value="1">
-                </div>
-                <div class="quantity">
-                    <p>Quantité (Stock/Magasin) :</p>
-                    <input type="number" min="1" max="5" value="1">
-                </div>
-                <div class="price">(Lieu Stockage)</div>
-                <div class="btn-box">
-                    <button class="buy-btn">Acheter</button>
-                </div>
+          <div class="left">
+              <div class="big-img">
+                  <img src="{{ asset( 'image/articles/' ~ article.lesImages[0].lienImage ) }}" alt="Image Principale Produit"> <!-- TODO: Changer pour le nom du produit -->
+              </div>
+              <div class="images">
+                  {% for image in article.lesImages[1:] %}
+                      <div class="small-img">
+                          <img src="{{ asset( 'image/articles/' ~ image.lienImage ) }}" alt="Produit Image">
+                      </div>
+                  {% endfor %}
+              </div>
+          </div>
+          <div class="right">
+              <br>
+              <div class="url">Accueil > Produit</div>
+              <div class="pname"> {{ article.nom }} </div>
+              <p>Référence: {{ reference }}</p>
+              <p>{{ article.description }}</p>
+              <p>(Fournisseur: {{ article.leFournisseur.nom }})</p>
+              <p>{{ article.fkrayons.nom }}</p>
+              <div class="price">{{ (article.prixUniHt * 1.2) | round(2) }}€ ({{ article.prixUniHt }}€ HT)</div> <!-- >article.prixuniht</!-->
+              <div class="quantity">
+                  <p>Quantité (Internet) : {{ stockinternet }}</p>
+              </div>
+              <div class="quantity">
+                  <p>Quantité (Stock/Magasin) :</p>
+                  <input type="number" min="1" max="5" value="1">
+              </div>
+              <div class="price">(Lieu Stockage)</div>
+              <div class="btn-box">
+                  <button class="buy-btn">Acheter</button>
+          </div>
             </div>
         </div>
     </div>

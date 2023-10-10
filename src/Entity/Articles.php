@@ -32,7 +32,7 @@ class Articles
     private Collection $articleCommandes;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
-    private ?rayons $fk_rayons = null;
+    private ?Rayons $fk_rayons = null;
 
     #[ORM\ManyToMany(targetEntity: Sport::class, mappedBy: 'lesarticles')]
     private Collection $lessports;
@@ -83,7 +83,7 @@ class Articles
 
     public function getPrixUniHT(): ?string
     {
-        return $this->prixunitht;
+        return $this->prixuniht;
     }
 
     public function setPrixUniHT(string $prixuniht): static
@@ -153,12 +153,12 @@ class Articles
         return $this;
     }
 
-    public function getFkRayons(): ?rayons
+    public function getFkRayons(): ?Rayons
     {
         return $this->fk_rayons;
     }
 
-    public function setFkRayons(?rayons $fk_rayons): static
+    public function setFkRayons(?Rayons $fk_rayons): static
     {
         $this->fk_rayons = $fk_rayons;
 

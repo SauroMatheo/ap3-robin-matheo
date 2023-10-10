@@ -26,11 +26,11 @@ class Commandes
     private Collection $articleCommandes;
 
     #[ORM\ManyToOne(inversedBy: 'commandes')]
-    private ?utilisateurs $fk_utilisateurs = null;
+    private ?Utilisateurs $fk_utilisateurs = null;
 
     #[ORM\ManyToOne(inversedBy: 'commandes')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?etats $fk_etat = null;
+    private ?Etats $fk_etat = null;
 
     public function __construct()
     {
@@ -96,24 +96,24 @@ class Commandes
         return $this;
     }
 
-    public function getFkUtilisateurs(): ?utilisateurs
+    public function getFkUtilisateurs(): ?Utilisateurs
     {
         return $this->fk_utilisateurs;
     }
 
-    public function setFkUtilisateurs(?utilisateurs $fk_utilisateurs): static
+    public function setFkUtilisateurs(?Utilisateurs $fk_utilisateurs): static
     {
         $this->fk_utilisateurs = $fk_utilisateurs;
 
         return $this;
     }
 
-    public function getFkEtat(): ?etats
+    public function getFkEtat(): ?Etats
     {
         return $this->fk_etat;
     }
 
-    public function setFkEtat(?etats $fk_etat): static
+    public function setFkEtat(?Etats $fk_etat): static
     {
         $this->fk_etat = $fk_etat;
 

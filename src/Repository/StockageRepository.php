@@ -21,6 +21,20 @@ class StockageRepository extends ServiceEntityRepository
         parent::__construct($registry, Stockage::class);
     }
 
+   /**
+    * @return Stockage[] Returns an array of Stockage objects
+    */
+   public function findByArticle($id): array
+   {
+       return $this->createQueryBuilder('s')
+           ->andWhere('s.fk_articles = :id AND s.fk_magasins = 0')
+           ->setParameter('id', $id)
+           ->getQuery()
+           ->getResult()
+       ;
+   }
+
+
 //    /**
 //     * @return Stockage[] Returns an array of Stockage objects
 //     */
