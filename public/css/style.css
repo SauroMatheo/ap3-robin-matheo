@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 body{
-  margin:0px;
-  padding: 0px;
-  font-family: 'Open Sans', sans-serif;
+  background-color:#fff;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .Icon {
@@ -79,24 +80,29 @@ header button{
   justify-content:center;
   align-items:center;
 }
+
 /* Tout les Articles */
 .Articles{
   display:flex;
   flex-wrap:wrap;
-  color:#fff;
+  text-shadow:#000;
 }
+
 .Articles .card{
   margin-right: 20px;
   cursor:pointer;
 }
+
 .Articles .card img{
   width: 350px;
 }
+
 .Articles .card .card-header{
   display: flex;
   flex-wrap:wrap;
   justify-content: space-between;
 }
+
 .Articles .card .card-body p{
   margin-top: -10px;
 }

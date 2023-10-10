@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LoginController!{% endblock %}
+
+{% block body %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Connection </title>
+    <link href="{{ asset('css/connection.css') }}" rel="stylesheet"/>
+</head>
+
+<body>
+   <img src="/img/bonhomme_connection.png" alt="azazaz">
+    <br>
+    <label for="mail"> Adresse e-mail : </label>
+    <input type="text" required id="mail" name="login"> <br>
+
+
+    <label for="mdp"> Mot de passe : </label>
+    <input type="password" required id="mdp" name="mdp"> <br>
+
+    <input type="checkbox" required name="rester connecter" id="rester connecter"> <label for="rester connecter">
+        Rester connecter </label><br>
+
+    <br>
+    <input type="submit" value="Se connecter">
+</body>
+
+</html>
+{% endblock %}

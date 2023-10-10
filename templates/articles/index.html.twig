@@ -3,51 +3,75 @@
 {% block title %}All4Sport{% endblock %}
 
 {% block body %}
+<nav>
+    <h1><a href="/accueil">All4Sport</a></h1>
+    <div class="onglets">
+        <p class="link"><a href="#Introduction"></a>Introduction</p>
+        <p class="link"><a href="#Articles"></a>Articles</p>
+        <p class="link"><a href="#Magasin"></a>Magasin</p>
+        <p class="link"><a href="#Commentaire"></a>Commentaire</p>
+        <form>
+            <input type="search" placeholder="Rechercher">
+        </form>
+        
+        <p><a href="/register"><img class="Icon" src="{{ asset('image/iconUser.png') }}" alt="Profile"/></a></p>
+        <p><a href="/panier"><img class="Icon" src="{{ asset('image/iconShop.png') }}" alt="Panier"/></a></p>
+    </div>
+</nav>
 <div class="articles">
     <link href="{{ asset('css/article.css') }}" rel="stylesheet"/>
     <div class="contours">
-        <div class="left">
-            <div class="big-img">
-                <img src="../image/logo.jpg" alt="Produit_Image_1">
-            </div>
-            <div class="images">
-                <div class="small-img">
-                <img src="../image/logo.jpg" onclick="showImg(this.src)">
+        <div class="flex-box">
+            <div class="left">
+                <div class="big-img">
+                    <img src="../image/articles/sneakers1.png" alt="Produit_Image_1">
                 </div>
-                <div class="small-img">
-                <img src="../image/logo.jpg" onclick="showImg(this.src)">
-                </div>
-                <div class="small-img">
-                <img src="../image/logo.jpg" onclick="showImg(this.src)">
-                </div>
-                <div class="small-img">
-                <img src="../image/logo.jpg" onclick="showImg(this.src)">
+                <div class="images">
+                    <div class="small-img">
+                        <img src="../image/articles/sneakers1.png" onclick="showImg(this.src)">
+                    </div>
+                    <div class="small-img">
+                        <img src="../image/articles/sneakers1.png" onclick="showImg(this.src)">
+                    </div>
+                    <div class="small-img">
+                        <img src="../image/articles/sneakers1.png" onclick="showImg(this.src)">
+                    </div>
+                    <div class="small-img">
+                        <img src="../image/articles/sneakers1.png" onclick="showImg(this.src)">
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="right">
-            <br>
-            <div class="url"><a href="/accueil">Accueil > Produit</a></div>
-            <div class="pname">(Nom)</div>
-            <p>(Référence)</p>
-            <p>(Description)</p>
-            <p>(Fournisseur {Nom})</p>
-            <p>(Rayon)</p>
-            <div class="price">(Coût Unitaire HT) / (Coût lot TTC) €</div>
-            <div class="quantity">
-                <p>Quantité (Internet) :</p>
-                <input type="number" min="1" max="5" value="1">
-            </div>
-            <div class="quantity">
-                <p>Quantité (Stock/Magasin) :</p>
-                <input type="number" min="1" max="5" value="1">
-            </div>
-            <div class="price">(Lieu Stockage)</div>
-            <div class="btn-box">
-                <button class="cart-btn">Ajouter la carte</button>
-                <button class="buy-btn">Acheter</button>
+            <div class="right">
+                <br>
+                <div class="pname">(Nom)</div>
+                <p>(Référence)</p>
+                <p>(Description)</p>
+                <p>(Fournisseur {Nom})</p>
+                <p>(Rayon)</p>
+                <div class="price">(Coût Unitaire HT) / (Coût lot TTC) €</div>
+                <div class="quantity">
+                    <p>Quantité (Internet) :</p>
+                    <input type="number" min="1" max="5" value="1">
+                </div>
+                <div class="quantity">
+                    <p>Quantité (Stock/Magasin) :</p>
+                    <input type="number" min="1" max="5" value="1">
+                </div>
+                <div class="price">(Lieu Stockage)</div>
+                <div class="btn-box">
+                    <button class="buy-btn">Acheter</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<footer>
+    <p>&copy; Contactez-nous au 07 83 08 30 19</p>
+    <div class="social-media">
+        <p><i class="fab fa-facebook-f"></i></p>
+        <p><i class="fab fa-twitter"></i></p>
+        <p><i class="fab fa-instagram"></i></p>
+        <p><i class="fab fa-linkedin-in"></i></p>
+    </div>
+</footer>
 {% endblock %}
