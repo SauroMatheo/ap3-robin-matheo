@@ -11,6 +11,32 @@
         {% endblock %}
     </head>
     <body>
+        <nav>
+            <h1><a href="/accueil">All4Sport</a></h1>
+            <div class="onglets">
+                <p class="link"><a href="#Introduction"></a>Introduction</p>
+                <p class="link"><a href="#Articles"></a>Articles</p>
+                <p class="link"><a href="#Magasin"></a>Magasin</p>
+                <p class="link"><a href="#Commentaire"></a>Commentaire</p>
+                <form>
+                    <input type="search" placeholder="Rechercher">
+                </form>
+
+                <p><a href="/register"><img class="Icon" src="{{ asset('image/iconUser.png') }}" alt="Profile"/></a></p>
+                <p><a href="/panier"><img class="Icon" src="{{ asset('image/iconShop.png') }}" alt="Panier"/></a></p>
+            </div>
+        </nav>
+
         {% block body %}{% endblock %}
+        
+        <footer>
+            <p>&copy; Contactez-nous au 07 83 08 30 19</p>
+            <div class="social-media">
+                <p><i class="fab fa-facebook-f"></i></p>
+                <p><i class="fab fa-twitter"></i></p>
+                <p><i class="fab fa-instagram"></i></p>
+                <p><i class="fab fa-linkedin-in"></i></p>
+            </div>
+        </footer>
     </body>
 </html>

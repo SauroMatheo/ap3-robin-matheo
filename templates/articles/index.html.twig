@@ -3,21 +3,7 @@
 {% block title %}All4Sport{% endblock %}
 
 {% block body %}
-<nav>
-    <h1><a href="/accueil">All4Sport</a></h1>
-    <div class="onglets">
-        <p class="link"><a href="#Introduction"></a>Introduction</p>
-        <p class="link"><a href="#Articles"></a>Articles</p>
-        <p class="link"><a href="#Magasin"></a>Magasin</p>
-        <p class="link"><a href="#Commentaire"></a>Commentaire</p>
-        <form>
-            <input type="search" placeholder="Rechercher">
-        </form>
 
-        <p><a href="/register"><img class="Icon" src="{{ asset('image/iconUser.png') }}" alt="Profile"/></a></p>
-        <p><a href="/panier"><img class="Icon" src="{{ asset('image/iconShop.png') }}" alt="Panier"/></a></p>
-    </div>
-</nav>
 <div class="articles">
     <link href="{{ asset('css/article.css') }}" rel="stylesheet"/>
     <div class="contours">
@@ -35,38 +21,29 @@
               </div>
           </div>
           <div class="right">
-              <br>
-              <div class="url">Accueil > Produit</div>
-              <div class="pname"> {{ article.nom }} </div>
-              <p>Référence: {{ reference }}</p>
-              <p>{{ article.description }}</p>
-              <p>(Fournisseur: {{ article.leFournisseur.nom }})</p>
-              <p>{{ article.fkrayons.nom }}</p>
-              <div class="price">{{ (article.prixUniHt * 1.2) | round(2) }}€ ({{ article.prixUniHt }}€ HT)</div> <!-- >article.prixuniht</!-->
-              <div class="quantity">
-                  <p>Quantité (Internet) : {{ stockinternet }}</p>
-              </div>
-              <!--
-              TODO: Lorsque l'on aura rajouté les comptes ou qu'on se décide d'utiliser du Javascript, on pourra l'utiliser 
-              <div class="quantity">
-                  <p>Quantité (Stock/Magasin) :</p>
-                  <input type="number" min="1" max="5" value="1">
-              </div>
-              -->
-              <div class="price">(Lieu Stockage)</div>
-              <div class="btn-box">
+                <br>
+                <div class="pname"> {{ article.nom }} </div>
+                <p>Référence: {{ reference }}</p>
+                <p>{{ article.description }}</p>
+                <p>(Fournisseur: {{ article.leFournisseur.nom }})</p>
+                <p>{{ article.fkrayons.nom }}</p>
+                <div class="price">{{ (article.prixUniHt * 1.2) | round(2) }}€ ({{ article.prixUniHt }}€ HT)</div> <!-- >article.prixuniht</!-->
+                <div class="quantity">
+                    <p>Quantité (Internet) : {{ stockinternet }}</p>
+                </div>
+                <!--
+                TODO: Lorsque l'on aura rajouté les comptes ou qu'on se décide d'utiliser du Javascript, on pourra l'utiliser 
+                <div class="quantity">
+                    <p>Quantité (Stock/Magasin) :</p>
+                    <input type="number" min="1" max="5" value="1">
+                    </div>
+                -->
+                <div class="price">(Lieu Stockage)</div>
+            <div class="btn-box">
                   <button class="buy-btn">Acheter</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<footer>
-    <p>&copy; Contactez-nous au 07 83 08 30 19</p>
-    <div class="social-media">
-        <p><i class="fab fa-facebook-f"></i></p>
-        <p><i class="fab fa-twitter"></i></p>
-        <p><i class="fab fa-instagram"></i></p>
-        <p><i class="fab fa-linkedin-in"></i></p>
-    </div>
-</footer>
 {% endblock %}
