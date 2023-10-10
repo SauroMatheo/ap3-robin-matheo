@@ -8,10 +8,10 @@
     <div class="contours">
         <div class="left">
             <div class="big-img">
-                <img src="{{ asset( 'image/articles/' ~ images[0].lienImage ) }}" alt="Image Principale Produit"> <!-- TODO: Changer pour le nom du produit -->
+                <img src="{{ asset( 'image/articles/' ~ article.lesImages[0].lienImage ) }}" alt="Image Principale Produit"> <!-- TODO: Changer pour le nom du produit -->
             </div>
             <div class="images">
-                {% for image in images[1:] %}
+                {% for image in article.lesImages[1:] %}
                     <div class="small-img">
                         <img src="{{ asset( 'image/articles/' ~ image.lienImage ) }}" alt="Produit Image">
                     </div>
@@ -26,7 +26,7 @@
             <p>{{ article.description }}</p>
             <p>(Fournisseur: {{ article.leFournisseur.nom }})</p>
             <p>{{ article.fkrayons.nom }}</p>
-            <div class="price">{{ prixttc }}€ ({{ prixht }}€ HT)</div> <!-- >article.prixuniht</!-->
+            <div class="price">{{ (article.prixUniHt * 1.2) | round(2) }}€ ({{ article.prixUniHt }}€ HT)</div> <!-- >article.prixuniht</!-->
             <div class="quantity">
                 <p>Quantité (Internet) : {{ stockinternet }}</p>
             </div>

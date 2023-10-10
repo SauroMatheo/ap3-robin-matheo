@@ -26,30 +26,22 @@ class ArticlesController extends AbstractController
             return $this->render('accueil/index.html.twig');
         }
 
-        $prixht = floatval(str_replace(',', '.', $article->getPrixUniHT()));
-        $prixttc = round($prixht * 1.2, 2);
-
         // TODO: Référence = FOURAY123456789012
 
         $fou = str_replace(" ", "", $article->getLeFournisseur()->getNom());
         $ray = str_replace(" ", "", $article->getFkRayons()->getNom());
         $reference = substr($fou, 0, 3).substr($ray, 0, 3).sprintf("%012d", $id);
 
-        $images = $imageRepository->findImagesById($id, 5);
-
         $stockinternet = $stockageRepository->findByArticle($id);
         if (count($stockinternet) < 1) {
-            $stockinternet = $stockinternet[0]->getQuantite();
+            $stockinternet = 0;
         } else {
             $stockinternet = $stockinternet[0]->getQuantite();
         }
 
         return $this->render('articles/index.html.twig', [
             'article' => $article,
-            'prixht' => $prixht,
-            'prixttc' => $prixttc,
             'reference' => $reference,
-            'images' => $images,
             'stockinternet' => $stockinternet
         ]);
     }
