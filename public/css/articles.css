@@ -137,6 +137,30 @@ header button {
 
 /* Fin du Magasin */
 
+.boutonWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bouton {
+  background-position: 0%;
+  transition: all 0.5s;
+  text-decoration: none;
+  margin: 1em;
+  border-radius: 0.8em;
+  background-color: black;
+  color: whitesmoke;
+  font-size: medium;
+  font-weight: bold;
+  padding: 0.8em;
+  font-family: "Open Sans";
+}
+
+.bouton:hover {
+  background-color: rgb(72, 89, 121);
+}
+
 /* Fin de la section principale */
 
 /* Pied de page */

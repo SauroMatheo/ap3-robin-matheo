@@ -57,7 +57,8 @@ class ArticlesController extends AbstractController
         $articles = $articleRepository->findLimOff($max_articles, $page*$max_articles);
         
         return $this->render('articles/tous_articles.html.twig', [
-            'articles' => $articles
+            'articles' => $articles,
+            "page" => $page
         ]);
     }
 }
