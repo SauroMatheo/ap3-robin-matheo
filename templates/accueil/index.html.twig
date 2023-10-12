@@ -1,75 +1,90 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}All4Sport{% endblock %}
+{% block title %}All4Sport
+{% endblock %}
 
 {% block body %}
-<div class="all4sport">
-  <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
+	<div class="all4sport">
+		<link
+		href="{{ asset('css/style.css') }}" rel="stylesheet"/>
 
-  <!-- Accueil -->
-   <header>
-     <h1>Ne soyez pas modo discord, faites du sport !</h1>
-     <button>Naviguer <i class="fas fa-paper-plane"></i></button>
-   </header>
-  <!-- Fin de Accueil -->
+		<!-- Accueil -->
+		<header>
+			<h1>Ne soyez pas modo discord, faites du sport !</h1>
+			<button>Naviguer
+				<i class="fas fa-paper-plane"></i>
+			</button>
+		</header>
+		<!-- Fin de Accueil -->
 
-  <!-- Section principale -->
-  <section class="main">
+		<!-- Section principale -->
+		<section
+			class="main">
 
-    <!-- Introduction -->
+			<!-- Introduction -->
 
-    <div class="Introduction">
-      <h1>Introduction</h1>
-      <br>
-      <p>All4Sport est une entreprise française de grande distribution de sport et de loisirs, créée en 1976 par Michel Leclercq. Le groupe All4Sport n'est pas coté en bourse, mais détenu par un actionnariat familial composé de trois collèges : la famille de l'ex-président fondateur, des salariés et la famille Mulliez.</p>
-      <br>
-    </div>
+			<div class="Introduction">
+				<h1>Introduction</h1>
+				<br>
+				<p>All4Sport est une entreprise française de grande distribution de sport et de loisirs, créée en 1976 par Michel Leclercq. Le groupe All4Sport n'est pas coté en bourse, mais détenu par un actionnariat familial composé de trois collèges : la famille de l'ex-président fondateur, des salariés et la famille Mulliez.</p>
+				<br>
+			</div>
 
-    <!-- Fin de Introduction -->
-    
-    <!-- Tout les Articles -->
-    
-    <div class="Articles">
+			<!-- Fin de Introduction -->
 
-      {% for article in articles %}
-        <div class="card">
-          <a href="{{ path('app_articles', {id: article.id}) }}"><img src="{{ asset( 'image/articles/' ~ article.lesImages[0].lienImage ) }}"></a>
-          <div class="card-header">
-            <h4 class="title">{{ article.nom }}</h4>
-            <h4 class="price">{{ (article.prixUniHt * 1.2) | round(2) }}€</h4>
-          </div>
-          <div class="card-body">
-            <p>{{ article.description }}</p>
-          </div>
-        </div>
-      {% endfor %}
-      
-     </div>
-    <!-- Fin de tout les Articles -->
-    
-    <!-- Magasin -->
-    <div class="Magasin">
-      <iframe src="https://www.youtube.com/embed/2COSkxxOtXY" allowfullscreen></iframe>
-    </div>
-    <!-- Fin de Magasin -->
+			<!-- Tout les Articles -->
 
-    <!-- Commentaire -->
+			<div class="Articles">
 
-    <div class="Commentaire">
-      <h1>Commentaire</h1>
-      <br>
-      <p>/////////////////</p>
-      <p>/////////////////</p>
-      <p>/////////////////</p>
-      <p>/////////////////</p>
-      <p>/////////////////</p>
-      <p>/////////////////</p>
-      <p>/////////////////</p>
-      <p>/////////////////</p>
-    </div>
-    
-    <!-- Fin de Commentaire -->
-  </section>
-  <!-- Fin de la section principale -->
-</div>
+				{% for article in articles %}
+					<div
+						class="card">
+
+						{# S'il n'y a pas d'images, met une image cassée pour montrer le problème #}
+						<a href="{{ path('app_articles', {id: article.id}) }}">
+							{% if article.lesImages is empty %}
+								<img src="{{ asset( 'image/image_cassee.png' ) }}">
+							{% else %}
+								<img src="{{ asset( 'image/articles/' ~ article.lesImages[0].lienImage ) }}">
+							{% endif %}
+						</a>
+
+						<div class="card-header">
+							<h4 class="title">{{ article.nom }}</h4>
+							<h4 class="price">{{ (article.prixUniHt * 1.2) | round(2) }}€</h4>
+						</div>
+						<div class="card-body">
+							<p>{{ article.description }}</p>
+						</div>
+					</div>
+				{% endfor %}
+
+			</div>
+			<!-- Fin de tout les Articles -->
+
+			<!-- Magasin -->
+			<div class="Magasin">
+				<iframe src="https://www.youtube.com/embed/2COSkxxOtXY" allowfullscreen></iframe>
+			</div>
+			<!-- Fin de Magasin -->
+
+			<!-- Commentaire -->
+
+			<div class="Commentaire">
+				<h1>Commentaire</h1>
+				<br>
+				<p>/////////////////</p>
+				<p>/////////////////</p>
+				<p>/////////////////</p>
+				<p>/////////////////</p>
+				<p>/////////////////</p>
+				<p>/////////////////</p>
+				<p>/////////////////</p>
+				<p>/////////////////</p>
+			</div>
+
+			<!-- Fin de Commentaire -->
+		</section>
+		<!-- Fin de la section principale -->
+	</div>
 {% endblock %}

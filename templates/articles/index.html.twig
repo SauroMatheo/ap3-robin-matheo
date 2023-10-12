@@ -10,7 +10,11 @@
         <div class="flex-box">
           <div class="left">
               <div class="big-img">
-                  <img src="{{ asset( 'image/articles/' ~ article.lesImages[0].lienImage ) }}" alt="Image Principale Produit"> <!-- TODO: Changer pour le nom du produit -->
+                {% if article.lesImages is empty %}
+                    <img src="{{ asset( 'image/image_cassee.png' ) }}">
+                {% else %}
+                    <img src="{{ asset( 'image/articles/' ~ article.lesImages[0].lienImage ) }}" alt="Image Principale Produit">
+                {% endif %}
               </div>
               <div class="images">
                   {% for image in article.lesImages[1:] %}
