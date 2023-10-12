@@ -16,7 +16,7 @@ class ArticlesController extends AbstractController
     public function tousArticles(ArticlesRepository $articleRepository): Response
     {
         $page = 0;
-        $max_articles = 4;
+        $max_articles = 32;
 
         if (isset($_GET["page"])) { $page = $_GET["page"]; }
 
