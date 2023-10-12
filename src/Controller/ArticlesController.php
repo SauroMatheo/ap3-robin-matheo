@@ -47,7 +47,14 @@ class ArticlesController extends AbstractController
             ]);
         }
 
-        $articles = $articleRepository->findAll();
+        $page = 0;
+        $max_articles = 4;
+
+        if (isset($_GET["page"])) { $page = $_GET["page"]; }
+
+
+        // $articles = $articleRepository->findAll();
+        $articles = $articleRepository->findLimOff($max_articles, $page*$max_articles);
         
         return $this->render('articles/tous_articles.html.twig', [
             'articles' => $articles
