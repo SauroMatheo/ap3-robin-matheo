@@ -1,42 +1,59 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>"> {% block stylesheets %}{% endblock %}{% block javascripts %}{% endblock %}
+		</head>
+		<body>
+			<nav>
+				<h1>
+					<a href="/accueil">All4Sport</a>
+				</h1>
+				<div class="onglets">
+					<p class="link">
+						<a href="#Introduction"></a>Introduction</p>
+					<p class="link">
+						<a href="{{ path('app_tous_articles' ) }}">Articles</a>
+					</p>
+					<p class="link">
+						<a href="#Magasin"></a>Magasin</p>
+					<p class="link">
+						<a href="#Commentaire"></a>Commentaire</p>
+					<form>
+						<input type="search" placeholder="Rechercher">
+					</form>
 
-        {% block javascripts %}
-        {% endblock %}
-    </head>
-    <body>
-        <nav>
-            <h1><a href="/accueil">All4Sport</a></h1>
-            <div class="onglets">
-                <p class="link"><a href="#Introduction"></a>Introduction</p>
-                <p class="link"><a href="{{ path('app_articles' ) }}">Articles</a></p>
-                <p class="link"><a href="#Magasin"></a>Magasin</p>
-                <p class="link"><a href="#Commentaire"></a>Commentaire</p>
-                <form>
-                    <input type="search" placeholder="Rechercher">
-                </form>
+					<p>
+						<a href="/register"><img class="Icon" src="{{ asset('image/iconUser.png') }}" alt="Profile"/></a>
+					</p>
+					<p>
+						<a href="/panier"><img class="Icon" src="{{ asset('image/iconShop.png') }}" alt="Panier"/></a>
+					</p>
+				</div>
+			</nav>
 
-                <p><a href="/register"><img class="Icon" src="{{ asset('image/iconUser.png') }}" alt="Profile"/></a></p>
-                <p><a href="/panier"><img class="Icon" src="{{ asset('image/iconShop.png') }}" alt="Panier"/></a></p>
-            </div>
-        </nav>
+			{% block body %}{% endblock %}
 
-        {% block body %}{% endblock %}
-        
-        <footer>
-            <p>&copy; Contactez-nous au 07 83 08 30 19</p>
-            <div class="social-media">
-                <p><i class="fab fa-facebook-f"></i></p>
-                <p><i class="fab fa-twitter"></i></p>
-                <p><i class="fab fa-instagram"></i></p>
-                <p><i class="fab fa-linkedin-in"></i></p>
-            </div>
-        </footer>
-    </body>
-</html>
+			<footer>
+				<p>&copy; Contactez-nous au 07 83 08 30 19</p>
+				<div class="social-media">
+					<p>
+						<i class="fab fa-facebook-f"></i>
+					</p>
+					<p>
+						<i class="fab fa-twitter"></i>
+					</p>
+					<p>
+						<i class="fab fa-instagram"></i>
+					</p>
+					<p>
+						<i class="fab fa-linkedin-in"></i>
+					</p>
+				</div>
+			</footer>
+		</body>
+	</html>
