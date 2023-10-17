@@ -26,7 +26,8 @@ class ArticlesController extends AbstractController
         
         return $this->render('articles/tous_articles.html.twig', [
             'articles' => $articles,
-            "page" => $page
+            "page" => $page,
+            'estderniere' => ( count($articles) < $max_articles )
         ]);
     }
     
