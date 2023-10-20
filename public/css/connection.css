@@ -1,14 +1,16 @@
+@import "style.css";
+
 body {
-    text-align: center;
-    max-width: max-content;
-    margin: 0 auto;
-    margin-top: 30px;
-    border: 1px solid black;
-    padding: 10px;
+  text-align: center;
+  max-width: max-content;
+  margin: 0 auto;
+  margin-top: 30px;
+  border: 1px solid black;
+  padding: 10px;
 }
 
 img {
-    align-items: center;
-    height: 50px;
-    width: 50px;
+  align-items: center;
+  height: 50px;
+  width: 50px;
 }
