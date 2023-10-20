@@ -21,6 +21,20 @@ class MagasinsRepository extends ServiceEntityRepository
         parent::__construct($registry, Magasins::class);
     }
 
+    /**
+    * @return Rayons[] Returns an array of Magasins objects
+    */
+    public function findByExampleField($id): array
+    {
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
 //    /**
 //     * @return Magasins[] Returns an array of Magasins objects
 //     */

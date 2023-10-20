@@ -1,0 +1,223 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+body {
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: "Open Sans";
+  margin: 0;
+}
+
+.Icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* Barre de navigation */
+nav {
+  color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #000;
+  position: sticky;
+  top: 0;
+}
+
+nav h1 {
+  font-size: 20px;
+}
+
+nav .onglets {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+nav .onglets p {
+  font-size: 17px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+nav .onglets input {
+  margin: 8px 20px;
+  padding: 15px;
+  border-radius: 30px;
+  border: none;
+  background-color: #f2f2f2;
+  outline: none;
+}
+
+/* Fin de la barre de navigation */
+
+/* Accueil */
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 50px;
+  max-width: 600px;
+  text-align: center;
+}
+
+header button {
+  padding: 15px 20px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Fin de Accueil */
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Introduction */
+
+/* Fin de Introduction */
+
+/* Section principale */
+
+.main {
+  margin: 20px;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Tout les Articles */
+.Container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  text-shadow: #000;
+  margin: 2em;
+}
+
+.card {
+  transition: 0.5s all;
+  margin-right: 20px;
+  cursor: pointer;
+  width: 20rem;
+  border: 0.2em solid #ccd;
+  background-color: #eee;
+  border-radius: 1em;
+  padding: 0.75rem;
+}
+
+.card:hover {
+  width: 25rem;
+  font-size: 120%;
+  border-color: aquamarine;
+  border-color: #ccf;
+}
+
+.card img {
+  width: 350px;
+}
+
+.card .card-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card .card-body p {
+  margin-top: -10px;
+}
+
+/* Fin de tout les Articles */
+
+/* Magasin */
+.main .Magasin {
+  margin-top: 80px;
+  width: 90%;
+}
+
+.main .Magasin iframe {
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  height: 400px;
+}
+
+/* Fin du Magasin */
+
+.boutonWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bouton {
+  background-position: 0%;
+  transition: all 0.5s;
+  text-decoration: none;
+  margin: 1em;
+  border-radius: 0.8em;
+  background-color: black;
+  color: whitesmoke;
+  font-size: medium;
+  font-weight: bold;
+  padding: 0.8em;
+  font-family: "Open Sans";
+}
+
+.bouton:hover {
+  background-color: rgb(72, 89, 121);
+}
+
+/* Fin de la section principale */
+
+/* Pied de page */
+footer {
+  margin-top: 100px;
+  background-color: #000;
+  padding: 30px;
+  color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+footer .social-media {
+  display: flex;
+}
+
+footer .social-media p {
+  margin-right: 15px;
+  border: 1px solid #fff;
+  border-radius: 100%;
+  padding: 5px;
+  text-align: center;
+  width: 20px;
+  cursor: pointer;
+}
+
+/* Fin du pied de page */
+
+@media screen and (max-width: 640px) {
+  nav .onglets .link,
+  nav h1 {
+    display: none;
+  }
+
+  .cards .card img {
+    width: 300px;
+  }
+}

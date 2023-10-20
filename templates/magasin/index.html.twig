@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MagasinController!
+{% endblock %}
+
+{% block stylesheets %}
+	<link href="{{ asset('css/magasins.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+	<div class="Container">
+		{% for magasin in magasins %}
+			<div class="card">
+				<h3 class="title">
+					<a href="{{ path('app_rayon', {magasin: magasin.id}) }}">{{ magasin.nom }}</a>
+				</h3>
+				<div class="card-body">
+					<p>{{ magasin.adresse }}</p>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}
