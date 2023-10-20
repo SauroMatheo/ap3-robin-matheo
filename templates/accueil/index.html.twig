@@ -37,8 +37,16 @@
 			<div class="Articles">
 
 				{% for article in articles %}
-					<div class="card">
-						<a href="{{ path('app_articles', {id: article.id}) }}"><img src="{{ asset( 'image/articles/' ~ article.lesImages[0].lienImage ) }}"></a>
+					<div
+						class="card">
+						{# S'il n'y a pas d'images, met une image cassée pour montrer le problème #}
+						<a href="{{ path('app_articles', {id: article.id}) }}">
+							{% if article.lesImages is empty %}
+								<img src="{{ asset( 'image/image_cassee.png' ) }}">
+							{% else %}
+								<img src="{{ asset( 'image/articles/' ~ article.lesImages[0].lienImage ) }}">
+							{% endif %}
+						</a>
 						<div class="card-header">
 							<h4 class="title">{{ article.nom }}</h4>
 							<h4 class="price">{{ (article.prixUniHt * 1.2) | round(2) }}€</h4>

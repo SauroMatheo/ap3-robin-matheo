@@ -1,49 +1,73 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}All4Sport{% endblock %}
+{% block title %}All4Sport
+{% endblock %}
 
 {% block body %}
 
-<div class="articles">
-    <link href="{{ asset('css/article.css') }}" rel="stylesheet"/>
-    <div class="contours">
-        <div class="flex-box">
-          <div class="left">
-              <div class="big-img">
-                  <img src="{{ asset( 'image/articles/' ~ article.lesImages[0].lienImage ) }}" alt="Image Principale Produit"> <!-- TODO: Changer pour le nom du produit -->
-              </div>
-              <div class="images">
-                  {% for image in article.lesImages[1:] %}
-                      <div class="small-img">
-                          <img src="{{ asset( 'image/articles/' ~ image.lienImage ) }}" alt="Produit Image">
-                      </div>
-                  {% endfor %}
-              </div>
-          </div>
-          <div class="right">
-                <br>
-                <div class="pname"> {{ article.nom }} </div>
-                <p>Référence: {{ reference }}</p>
-                <p>{{ article.description }}</p>
-                <p>(Fournisseur: {{ article.leFournisseur.nom }})</p>
-                <p>{{ article.fkrayons.nom }}</p>
-                <div class="price">{{ (article.prixUniHt * 1.2) | round(2) }}€ ({{ article.prixUniHt }}€ HT)</div> <!-- >article.prixuniht</!-->
-                <div class="quantity">
-                    <p>Quantité (Internet) : {{ stockinternet }}</p>
-                </div>
-                <!--
-                TODO: Lorsque l'on aura rajouté les comptes ou qu'on se décide d'utiliser du Javascript, on pourra l'utiliser 
-                <div class="quantity">
-                    <p>Quantité (Stock/Magasin) :</p>
-                    <input type="number" min="1" max="5" value="1">
-                    </div>
-                -->
-                <div class="price">(Lieu Stockage)</div>
-            <div class="btn-box">
-                  <button class="buy-btn">Acheter</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+	<div class="articles">
+		<link href="{{ asset('css/article.css') }}" rel="stylesheet"/>
+		<div class="contours">
+			<div class="flex-box">
+				<div class="left">
+					<div
+						class="big-img">
+						{# S'il n'y a pas d'images, met une image cassée pour montrer le problème #}
+						<a href="{{ path('app_articles', {id: article.id}) }}">
+							{% if article.lesImages is empty %}
+								<img src="{{ asset( 'image/image_cassee.png' ) }}">
+							{% else %}
+								<img src="{{ asset( 'image/articles/' ~ article.lesImages[0].lienImage ) }}">
+							{% endif %}
+						</a>
+						<!-- TODO: Changer pour le nom du produit -->
+					</div>
+					<div class="images">
+						{% for image in article.lesImages[1:] %}
+							<div
+								class="small-img">
+								{# S'il n'y a pas d'images, met une image cassée pour montrer le problème #}
+								<a href="{{ path('app_articles', {id: article.id}) }}">
+									{% if article.lesImages is empty %}
+										<img src="{{ asset( 'image/image_cassee.png' ) }}">
+									{% else %}
+										<img src="{{ asset( 'image/articles/' ~ article.lesImages[0].lienImage ) }}">
+									{% endif %}
+								</a>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="right">
+					<br>
+					<div class="pname">
+						{{ article.nom }}
+					</div>
+					<p>Référence:
+						{{ reference }}</p>
+					<p>{{ article.description }}</p>
+					<p>(Fournisseur:
+						{{ article.leFournisseur.nom }})</p>
+					<p>{{ article.fkrayons.nom }}</p>
+					<div class="price">{{ (article.prixUniHt * 1.2) | round(2) }}€ ({{ article.prixUniHt }}€ HT)</div>
+					<!-- >article.prixuniht</!-->
+					<div class="quantity">
+						<p>Quantité (Internet) :
+							{{ stockinternet }}</p>
+					</div>
+					<!--
+										                TODO: Lorsque l'on aura rajouté les comptes ou qu'on se décide d'utiliser du Javascript, on pourra l'utiliser 
+										                <div class="quantity">
+										                    <p>Quantité (Stock/Magasin) :</p>
+										                    <input type="number" min="1" max="5" value="1">
+										                    </div>
+										                -->
+					<div class="price">(Lieu Stockage)</div>
+					<div class="btn-box">
+						<button class="buy-btn">Acheter</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
