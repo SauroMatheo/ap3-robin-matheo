@@ -1,4 +1,58 @@
-@import "style.css";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+body {
+  background-image: url(../../image/backgroundArticles.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: "Open Sans";
+  margin: 0;
+}
+
+.articles {
+  display: flex;
+  width: 1000px;
+  margin: 20px auto;
+}
+
+.Icon {
+  width: 30px;
+  height: 30px;
+}
+
+nav {
+  color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #000;
+  top: 0;
+}
+
+nav h1 {
+  font-size: 20px;
+}
+
+nav .onglets {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+nav .onglets p {
+  font-size: 17px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+nav .onglets input {
+  margin: 8px 20px;
+  padding: 15px;
+  border-radius: 30px;
+  border: none;
+  background-color: #f2f2f2;
+  outline: none;
+}
 
 .contours {
   border: thick double #32a1ce;
@@ -132,4 +186,28 @@
 
 .buy-btn:hover {
   background-color: #0066ff;
+}
+
+footer {
+  margin-top: 100px;
+  background-color: #000;
+  padding: 30px;
+  color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+footer .social-media {
+  display: flex;
+}
+
+footer .social-media p {
+  margin-right: 15px;
+  border: 1px solid #fff;
+  border-radius: 100%;
+  padding: 9px;
+  text-align: center;
+  width: 40px;
+  cursor: pointer;
 }
