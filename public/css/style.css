@@ -92,6 +92,11 @@ header button {
   align-items: center;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Fin de la section principale */
 
 /* Pied de page */
