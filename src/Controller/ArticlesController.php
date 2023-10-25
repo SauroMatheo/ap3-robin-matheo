@@ -10,15 +10,30 @@ use App\Repository\ArticlesRepository;
 use App\Repository\ImageArticleRepository;
 use App\Repository\StockageRepository;
 
-use App\Entity\Rayons;
-
 class ArticlesController extends AbstractController
 {
-    #[Route('/articles', name: 'app_articles')]
-    public function index(ArticlesRepository $articleRepository, ImageArticleRepository $imageRepository, StockageRepository $stockageRepository): Response
+    #[Route('/articles', name: 'app_tous_articles')]
+    public function tousArticles(ArticlesRepository $articleRepository): Response
     {
-        $id = $_GET['id'];
+        $page = 0;
+        $max_articles = 32;
+
+        if (isset($_GET["page"])) { $page = $_GET["page"]; }
+
+
+        // $articles = $articleRepository->findAll();
+        $articles = $articleRepository->findLimOff($max_articles, $page*$max_articles);
         
+        return $this->render('articles/tous_articles.html.twig', [
+            'articles' => $articles,
+            "page" => $page,
+            'estderniere' => ( count($articles) < $max_articles )
+        ]);
+    }
+    
+    #[Route('/articles/{id}', name: 'app_articles')]
+    public function index(int $id, ArticlesRepository $articleRepository, StockageRepository $stockageRepository): Response
+    {
         $article = $articleRepository->find($id);
 
         if ($article == null) {
