@@ -16,13 +16,15 @@ class ArticlesController extends AbstractController
     public function tousArticles(ArticlesRepository $articleRepository): Response
     {
         $page = 0;
+        $nom = '';
         $max_articles = 32;
 
         if (isset($_GET["page"])) { $page = $_GET["page"]; }
-
+        if (isset($_GET['nom'])) { $nom = $nom.$_GET['nom']; }
 
         // $articles = $articleRepository->findAll();
-        $articles = $articleRepository->findLimOff($max_articles, $page*$max_articles);
+        // $articles = $articleRepository->findLimOff($max_articles, $page*$max_articles);
+        $articles = $articleRepository->condLimOff($max_articles, $page*$max_articles, $nom);
         
         return $this->render('articles/tous_articles.html.twig', [
             'articles' => $articles,
