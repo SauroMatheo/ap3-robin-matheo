@@ -16,6 +16,46 @@
   align-items: center;
 }
 
+/*
+.all4sport {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.Sidebar {
+  grid-column: 1;
+  background-color: #333;
+  color: #eee;
+  height: 100%;
+  width: 20em;
+  padding: 1em;
+  margin: 0;
+}
+
+.articles-wrapper {
+  grid-column: 2;
+}
+*/
+
+.all4sport {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.Sidebar {
+  background-color: #333;
+  color: #eee;
+  height: 100%;
+  width: 20em;
+  padding: 1em;
+  margin: 0;
+}
+
 /* Tout les Articles */
 .Articles {
   display: flex;

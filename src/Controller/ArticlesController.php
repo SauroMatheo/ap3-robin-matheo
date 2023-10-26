@@ -9,27 +9,39 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ArticlesRepository;
 use App\Repository\ImageArticleRepository;
 use App\Repository\StockageRepository;
+use App\Repository\RayonsRepository;
 
 class ArticlesController extends AbstractController
 {
     #[Route('/articles', name: 'app_tous_articles')]
-    public function tousArticles(ArticlesRepository $articleRepository): Response
+    public function tousArticles(ArticlesRepository $articleRepository, RayonsRepository $rayonsRepository): Response
     {
         $page = 0;
-        $nom = '';
-        $max_articles = 32;
+        $max_articles = 4;
+        
+        $nom = null;
+        $rayon = null;
+
+        $rayons = $rayonsRepository->findAll();
 
         if (isset($_GET["page"])) { $page = $_GET["page"]; }
-        if (isset($_GET['nom'])) { $nom = $nom.$_GET['nom']; }
+
+        if (isset($_GET['nom'])) { $nom = $_GET['nom']; }
+        if (isset($_GET['rayon'])) { $rayon = $_GET['rayon']; }
+
+        if ($nom == null and $rayon == null) {
+            $articles = $articleRepository->findLimOff($max_articles, $page*$max_articles); 
+        } else {
+            $articles = $articleRepository->condLimOff($max_articles, $page*$max_articles, $nom, $rayon);   
+        }
 
         // $articles = $articleRepository->findAll();
-        // $articles = $articleRepository->findLimOff($max_articles, $page*$max_articles);
-        $articles = $articleRepository->condLimOff($max_articles, $page*$max_articles, $nom);
         
         return $this->render('articles/tous_articles.html.twig', [
             'articles' => $articles,
             "page" => $page,
-            'estderniere' => ( count($articles) < $max_articles )
+            'estderniere' => ( count($articles) < $max_articles ),
+            'rayons' => $rayons
         ]);
     }
     

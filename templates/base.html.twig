@@ -27,8 +27,8 @@
 					<a href="#Magasin"></a>Magasin</p>
 				<p class="link">
 					<a href="#Commentaire"></a>Commentaire</p>
-				<form>
-					<input type="search" placeholder="Rechercher">
+				<form action="{{ path('app_tous_articles') }}" method="get">
+					<input type="search" placeholder="Rechercher" id="nom" name='nom'>
 				</form>
 
 				<p>

@@ -49,16 +49,25 @@ class ArticlesRepository extends ServiceEntityRepository
     /**
     * @return Articles[] Returns an array of Articles objects
     */
-    public function condLimOff($limit, $offset, $nom): array
+    public function condLimOff($limit, $offset, $nom, $rayon): array
     {
-        return $this->createQueryBuilder('a')
+        $query = $this->createQueryBuilder('a')
             ->setMaxResults($limit)
-            ->setFirstResult($offset)
-            ->andWhere('a.nom LIKE %:nom%')
-            ->setParameter('nom', $nom)
-            ->getQuery()
-            ->getResult()
-        ;
+            ->setFirstResult($offset);
+
+        if (!empty($nom)) {
+            $query = $query
+            ->andWhere('a.nom LIKE :nom')
+            ->setParameter('nom', '%'.$nom.'%');
+        }
+        
+        if (!empty($rayon)) {
+            $query = $query
+            ->andWhere('a.fk_rayons = :rayon')
+            ->setParameter('rayon', $rayon);
+        }
+
+        return $query->getQuery()->getResult();
     }
 
 //    /**

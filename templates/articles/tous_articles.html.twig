@@ -5,46 +5,62 @@
 
 {% block body %}
 	<div class="all4sport">
-		<link
-		href="{{ asset('css/articles.css') }}" rel="stylesheet"/>
+		<link href="{{ asset('css/articles.css') }}" rel="stylesheet"/>
+
+		<div class='Sidebar'>
+			<form action: "{{ path('app_tous_articles') }}" method="get">
+				<input type="search" placeholder="Termes de recherche..." id="nom" name='nom'><br>
+				<label for="rayon">Rayon:
+				</label>
+				<select id="rayon" name="rayon">
+					<option disabled selected value>(Aucun)</option>
+					{% for rayon in rayons %}
+						<option value="{{ rayon.id }}">{{ rayon.nom }}</option>
+					{% endfor %}
+				</select>
+				<input type="submit" value="Rechercher !">
+			</form>
+		</div>
 
 		<!-- Tout les Articles -->
 
-		<div class="Articles">
+		<div class='articles-wrapper'>
+			<div class="Articles">
 
-			{% for article in articles %}
-				<div class="card">
-					<a href="{{ path('app_articles', {id: article.id}) }}">
-						{% if article.lesImages is empty %}
-							<img src="{{ asset( 'image/image_cassee.png' ) }}">
-						{% else %}
-							<img src="{{ asset( 'image/articles/' ~ article.lesImages[0].lienImage ) }}">
-						{% endif %}
-					</a>
-					<div class="card-header">
-						<h4 class="title">{{ article.nom }}</h4>
-						<h4 class="price">{{ (article.prixUniHt * 1.2) | round(2) }}€</h4>
+				{% for article in articles %}
+					<div class="card">
+						<a href="{{ path('app_articles', {id: article.id}) }}">
+							{% if article.lesImages is empty %}
+								<img src="{{ asset( 'image/image_cassee.png' ) }}">
+							{% else %}
+								<img src="{{ asset( 'image/articles/' ~ article.lesImages[0].lienImage ) }}">
+							{% endif %}
+						</a>
+						<div class="card-header">
+							<h4 class="title">{{ article.nom }}</h4>
+							<h4 class="price">{{ (article.prixUniHt * 1.2) | round(2) }}€</h4>
+						</div>
+						<div class="card-body">
+							<p>{{ article.description }}</p>
+						</div>
 					</div>
-					<div class="card-body">
-						<p>{{ article.description }}</p>
-					</div>
-				</div>
-			{% endfor %}
+				{% endfor %}
 
-		</div>
-		<!-- Fin de tout les Articles -->
+			</div>
+			<!-- Fin de tout les Articles -->
 
-		<div class="boutonWrapper">
-			{% if page != 0 %}
-				<a href="{{ path('app_tous_articles', {page: page - 1}) }}" class="bouton">◀ Page
-					{{ page - 1 }}</a>
-			{% endif %}
+			<div class="boutonWrapper">
+				{% if page != 0 %}
+					<a href="{{ path('app_tous_articles', {page: page - 1}) }}" class="bouton">◀ Page
+						{{ page - 1 }}</a>
+				{% endif %}
 
-			{% if not estderniere %}
-				<a href="{{ path('app_tous_articles', {page: page + 1}) }}" class="bouton">Page
-					{{ page + 1 }}
-					▶</a>
-			{% endif %}
+				{% if not estderniere %}
+					<a href="{{ path('app_tous_articles', {page: page + 1}) }}" class="bouton">Page
+						{{ page + 1 }}
+						▶</a>
+				{% endif %}
+			</div>
 		</div>
 	</div>
 {% endblock %}
