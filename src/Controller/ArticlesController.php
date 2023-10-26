@@ -17,7 +17,7 @@ class ArticlesController extends AbstractController
     public function tousArticles(ArticlesRepository $articleRepository, RayonsRepository $rayonsRepository): Response
     {
         $page = 0;
-        $max_articles = 4;
+        $max_articles = 2;
         
         $nom = null;
         $rayon = null;
@@ -30,18 +30,18 @@ class ArticlesController extends AbstractController
         if (isset($_GET['rayon'])) { $rayon = $_GET['rayon']; }
 
         if ($nom == null and $rayon == null) {
-            $articles = $articleRepository->findLimOff($max_articles, $page*$max_articles); 
+            $articles = $articleRepository->findAll();
         } else {
-            $articles = $articleRepository->condLimOff($max_articles, $page*$max_articles, $nom, $rayon);   
+            $articles = $articleRepository->findSearch($nom, $rayon); 
         }
-
-        // $articles = $articleRepository->findAll();
         
         return $this->render('articles/tous_articles.html.twig', [
-            'articles' => $articles,
+            'articles' => array_slice($articles, $page*$max_articles, $max_articles),
+            'rayons' => $rayons,
             "page" => $page,
-            'estderniere' => ( count($articles) < $max_articles ),
-            'rayons' => $rayons
+            'estderniere' => ( count($articles) <= ($page+1)*$max_articles ),
+            'nom' => $nom,
+            'rayon' => $rayon
         ]);
     }
     

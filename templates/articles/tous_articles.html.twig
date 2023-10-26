@@ -14,8 +14,8 @@
 				</label>
 				<select id="rayon" name="rayon">
 					<option disabled selected value>(Aucun)</option>
-					{% for rayon in rayons %}
-						<option value="{{ rayon.id }}">{{ rayon.nom }}</option>
+					{% for x_rayon in rayons %}
+						<option value="{{ x_rayon.id }}">{{ x_rayon.nom }}</option>
 					{% endfor %}
 				</select>
 				<input type="submit" value="Rechercher !">
@@ -56,7 +56,7 @@
 				{% endif %}
 
 				{% if not estderniere %}
-					<a href="{{ path('app_tous_articles', {page: page + 1}) }}" class="bouton">Page
+					<a href="{{ path('app_tous_articles', {page: page + 1, nom: nom, rayon: rayon}) }}" class="bouton">Page
 						{{ page + 1 }}
 						▶</a>
 				{% endif %}

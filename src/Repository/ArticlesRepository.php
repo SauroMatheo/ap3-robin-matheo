@@ -33,27 +33,12 @@ class ArticlesRepository extends ServiceEntityRepository
        ;
    }
 
-   /**
-    * @return Articles[] Returns an array of Articles objects
-    */
-    public function findLimOff($limit, $offset): array
-    {
-        return $this->createQueryBuilder('a')
-            ->setMaxResults($limit)
-            ->setFirstResult($offset)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-
     /**
     * @return Articles[] Returns an array of Articles objects
     */
-    public function condLimOff($limit, $offset, $nom, $rayon): array
+    public function findSearch($nom, $rayon): array
     {
-        $query = $this->createQueryBuilder('a')
-            ->setMaxResults($limit)
-            ->setFirstResult($offset);
+        $query = $this->createQueryBuilder('a');
 
         if (!empty($nom)) {
             $query = $query
