@@ -27,9 +27,10 @@
 					<a href="#Magasin"></a>Magasin</p>
 				<p class="link">
 					<a href="#Commentaire"></a>Commentaire</p>
-				<form>
-					<input type="search" placeholder="Rechercher">
-				</form>
+
+				{{ form_start(form) }}
+				{{ form_widget(form.nom) }}
+				{{ form_end(form) }}
 
 				<p>
 					<a href="/register"><img class="Icon" src="{{ asset('image/iconUser.png') }}" alt="Profile"/></a>
