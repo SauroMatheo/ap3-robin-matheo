@@ -33,6 +33,28 @@ class ArticlesRepository extends ServiceEntityRepository
        ;
    }
 
+    /**
+    * @return Articles[] Returns an array of Articles objects
+    */
+    public function findSearch($nom, $rayon): array
+    {
+        $query = $this->createQueryBuilder('a');
+
+        if (!empty($nom)) {
+            $query = $query
+            ->andWhere('a.nom LIKE :nom')
+            ->setParameter('nom', '%'.$nom.'%');
+        }
+        
+        if (!empty($rayon)) {
+            $query = $query
+            ->andWhere('a.fk_rayons = :rayon')
+            ->setParameter('rayon', $rayon);
+        }
+
+        return $query->getQuery()->getResult();
+    }
+
 //    /**
 //     * @return Articles[] Returns an array of Articles objects
 //     */

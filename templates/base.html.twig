@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
-
-        {% block javascripts %}
-        {% endblock %}
-    </head>
-    <body>
-        <nav>
-            <h1><a href="/accueil">All4Sport</a></h1>
-            <div class="onglets">
-                <p class="link"><a href="#Introduction"></a>Introduction</p>
-                <p class="link"><a href="#Articles"></a>Articles</p>
-                <p class="link"><a href="#Magasin"></a>Magasin</p>
-                <p class="link"><a href="#Commentaire"></a>Commentaire</p>
-                <form>
-                    <input type="search" placeholder="Rechercher">
-                </form>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link
+		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		{# <link rel="stylesheet" href "{{ asset('css/style.css') }}"> #}
+		{% block stylesheets %}{% endblock %}
+		{% block javascripts %}{% endblock %}
+	</head>
+	<body>
+		<nav>
+			<h1>
+				<a href="/accueil">All4Sport</a>
+			</h1>
+			<div class="onglets">
+				<p class="link">
+					<a href="#Introduction"></a>Introduction</p>
+				<p class="link">
+					<a href="{{ path('app_tous_articles') }}">Articles</a>
+				</p>
+				<p class="link">
+					<a href="#Magasin"></a>Magasin</p>
+				<p class="link">
+					<a href="#Commentaire"></a>Commentaire</p>
+				<form action="{{ path('app_tous_articles') }}" method="get">
+					<input type="search" placeholder="Rechercher" id="nom" name='nom'>
+				</form>
 
 				<p>
 					<a href="/register"><img class="Icon" src="{{ asset('image/iconUser.png') }}" alt="Profile"/></a>
@@ -31,16 +40,24 @@
 			</div>
 		</nav>
 
-        {% block body %}{% endblock %}
-        
-        <footer>
-            <p>&copy; Contactez-nous au 07 83 08 30 19</p>
-            <div class="social-media">
-                <p><a href="https://www.facebook.com/lequipeange.ange" target="_blank"><img class="Icon" src="{{ asset('image/facebook.png') }}" alt="Facebook"/></a></p>
-                <p><a href="https://twitter.com/NatellenYTB" target="_blank"><img class="Icon" src="{{ asset('image/twitter.png') }}" alt="Twitter"/></a></p>
-                <p><a href="https://www.instagram.com/natellen_manganime/" target="_blank"><img class="Icon" src="{{ asset('image/instagram.png') }}" alt="Instagram"/></a></p>
-                <p><a href="https://www.linkedin.com/in/robin-ananou-346b67213/" target="_blank"><img class="Icon" src="{{ asset('image/linkedin.png  ') }}" alt="Linkedin"/></a></p>
-            </div>
-        </footer>
-    </body>
+		{% block body %}{% endblock %}
+
+		<footer>
+			<p>&copy; Contactez-nous au 07 83 08 30 19</p>
+			<div class="social-media">
+				<p>
+					<a href="https://www.facebook.com/lequipeange.ange" target="_blank"><img class="Icon" src="{{ asset('image/facebook.png') }}" alt="Facebook"/></a>
+				</p>
+				<p>
+					<a href="https://twitter.com/NatellenYTB" target="_blank"><img class="Icon" src="{{ asset('image/twitter.png') }}" alt="Twitter"/></a>
+				</p>
+				<p>
+					<a href="https://www.instagram.com/natellen_manganime/" target="_blank"><img class="Icon" src="{{ asset('image/instagram.png') }}" alt="Instagram"/></a>
+				</p>
+				<p>
+					<a href="https://www.linkedin.com/in/robin-ananou-346b67213/" target="_blank"><img class="Icon" src="{{ asset('image/linkedin.png ') }}" alt="Linkedin"/></a>
+				</p>
+			</div>
+		</footer>
+	</body>
 </html>
