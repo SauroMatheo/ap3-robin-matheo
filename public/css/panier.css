@@ -1,0 +1,52 @@
+@import "style.css";
+
+/* Section principale */
+.main {
+  margin: 20px;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Tout les Articles */
+.Articles {
+  display: flex;
+  flex-wrap: wrap;
+  text-shadow: #000;
+}
+
+.Articles .card {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.Articles .card img {
+  width: 350px;
+}
+
+.Articles .card .card-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.Articles .card .card-body p {
+  margin-top: -10px;
+}
+
+/* Fin de tout les Articles */
+
+/* Magasin */
+.main .Magasin {
+  margin-top: 80px;
+  width: 90%;
+}
+
+.main .Magasin iframe {
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  height: 400px;
+}

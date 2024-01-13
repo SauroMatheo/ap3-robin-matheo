@@ -6,14 +6,25 @@
 {% block body %}
 	<div class="all4sport">
 		<link
-		href="{{ asset('css/accueil.css') }}" rel="stylesheet"/>
+		href="{{ asset('css/panier.css') }}" rel="stylesheet"/>
 
 		<!-- Section principale -->
 		<section
 			class="main">
 			<!-- Tout les Articles -->
 
+			<h1>All4Sport - Panier</h1>
+
+			<h4>Total du panier:
+				{{ total | round(2) }}€</h4>
+			<br>
+
+			{% if articles is empty %}
+				<h2>Votre panier est vide.</h2>
+			{% endif %}
+
 			<div class="Articles">
+
 
 				{% for article in articles %}
 					<div
@@ -27,11 +38,10 @@
 							{% endif %}
 						</a>
 						<div class="card-header">
-							<h4 class="title">{{ article.nom }}</h4>
-							<h4 class="price">{{ (article.prixUniHt * 1.2) | round(2) }}€</h4>
-						</div>
-						<div class="card-body">
-							<p>{{ article.description }}</p>
+							<h4 class="title">{{ quantites[loop.index0] }}x
+								{{ article.nom }}</h4>
+							<h4 class="price">{{ (article.prixUniHt * 1.2) | round(2) }}€ =>
+								{{ (article.prixUniHt * 1.2 * quantites[loop.index0]) | round(2) }}€</h4>
 						</div>
 					</div>
 				{% endfor %}
