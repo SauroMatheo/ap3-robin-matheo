@@ -5,15 +5,16 @@
 
 {% block body %}
 	<div class="all4sport">
-		<link
-		href="{{ asset('css/panier.css') }}" rel="stylesheet"/>
+		<link href="{{ asset('css/panier.css') }}" rel="stylesheet"/>
+
+		<div class="premain">
+			<h1>All4Sport - Panier</h1>
+		</div>
 
 		<!-- Section principale -->
 		<section
 			class="main">
 			<!-- Tout les Articles -->
-
-			<h1>All4Sport - Panier</h1>
 
 			<h4>Total du panier:
 				{{ total | round(2) }}€</h4>
