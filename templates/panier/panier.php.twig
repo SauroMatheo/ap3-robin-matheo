@@ -1,20 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PanierController!{% endblock %}
+{% block title %}All4Sport
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<div class="all4sport">
+		<link
+		href="{{ asset('css/accueil.css') }}" rel="stylesheet"/>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+		<!-- Section principale -->
+		<section
+			class="main">
+			<!-- Tout les Articles -->
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/ap3-robin-matheo/src/Controller/PanierController.php'|file_link(0) }}">src/Controller/PanierController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/ap3-robin-matheo/templates/panier/index.html.twig'|file_link(0) }}">templates/panier/index.html.twig</a></code></li>
-    </ul>
-</div>
+			<div class="Articles">
+
+				{% for article in articles %}
+					<div
+						class="card">
+						{# S'il n'y a pas d'images, met une image cassée pour montrer le problème #}
+						<a href="{{ path('app_articles', {id: article.id}) }}">
+							{% if article.lesImages is empty %}
+								<img src="{{ asset( 'image/image_cassee.png' ) }}">
+							{% else %}
+								<img src="{{ asset( 'image/articles/' ~ article.lesImages[0].lienImage ) }}">
+							{% endif %}
+						</a>
+						<div class="card-header">
+							<h4 class="title">{{ article.nom }}</h4>
+							<h4 class="price">{{ (article.prixUniHt * 1.2) | round(2) }}€</h4>
+						</div>
+						<div class="card-body">
+							<p>{{ article.description }}</p>
+						</div>
+					</div>
+				{% endfor %}
+
+			</div>
+			<!-- Fin de tout les Articles -->
+
+		</section>
+		<!-- Fin de la section principale -->
+	</div>
 {% endblock %}
