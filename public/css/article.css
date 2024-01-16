@@ -1,29 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 @import url("style.css");
 
-body {
-  background-image: url(../../image/backgroundArticles.jpg);
-}
-
 nav {
   z-index: 1;
 }
 
 .articles {
   display: flex;
-  width: 1000px;
+  width: 90%;
   margin: 20px auto;
 }
 
 .contours {
-  border: thick double #32a1ce;
-  background-color: lightblue;
-  padding: 10px;
-  margin: 10%;
-  width: 80%;
+  border: thick solid #32a1ce;
+  /* background-color: lightblue; */
+  background-color: whitesmoke;
+  padding: 3em;
+  margin: 2.5%;
+  width: 95%;
   font-weight: bold;
-  border-radius: 5px;
-  opacity: 93%;
+  border-radius: 1em;
 }
 
 .flex-box {
@@ -62,14 +58,22 @@ nav {
 }
 
 .small-img {
-  width: 50px;
+  width: 4em;
+  height: 4em;
   overflow: hidden;
   border: 1.5px solid black;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.small-img:hover {
+  transform: scale(1.2);
 }
 
 .small-img img {
   width: inherit;
-  height: 60px;
+  height: 4em;
+  width: 4em;
   cursor: pointer;
   transition: all 0.3s ease;
 }

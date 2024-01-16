@@ -19,18 +19,12 @@
 			</h1>
 			<div class="onglets">
 				<p class="link">
-					<a href="#Introduction"></a>Introduction</p>
-				<p class="link">
-					<a href="{{ path('app_tous_articles') }}">Articles</a>
+					<a href="{{ path('app_tous_articles') }}">Magasin</a>
 				</p>
 				<p class="link">
-					<a href="#Magasin"></a>Magasin</p>
-				<p class="link">
-					<a href="#Commentaire"></a>Commentaire</p>
-				<form action="{{ path('app_tous_articles') }}" method="get">
-					<input type="search" placeholder="Rechercher" id="nom" name='nom'>
-				</form>
-
+					<form action="{{ path('app_tous_articles') }}" method="get">
+						<input type="search" placeholder="Rechercher" id="nom" name='nom'></form>
+				</p>
 				<p>
 					<a href="/register"><img class="Icon" src="{{ asset('image/iconUser.png') }}" alt="Profile"/></a>
 				</p>

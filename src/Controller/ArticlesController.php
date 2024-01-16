@@ -17,7 +17,7 @@ class ArticlesController extends AbstractController
     public function tousArticles(ArticlesRepository $articleRepository, RayonsRepository $rayonsRepository): Response
     {
         $page = 0;
-        $max_articles = 2;
+        $max_articles = 3;
         
         $nom = null;
         $rayon = null;
