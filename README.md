@@ -30,6 +30,7 @@ Voici les informations utilisées pendant notre période de développement:
 |Nom BDD| ap3mathin|
 |Mot de passe|M47h1nEtSoir
 |Adresse|localhost:3306
+
 _Remarque: Le développement s'est fait en se connectant localement, mais un test pour s'assurer que se connecter à une autre base a été fait._
 _Remarque 2: le nom de la BDD ayant le jeu de données est aussi ap3mathin, penser à modifier le nom du schema si le nom de la BDD est modifié._
 
