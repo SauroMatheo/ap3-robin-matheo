@@ -8,6 +8,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LoginController extends AbstractController
 {
+    /**
+    * Page de connexion
+    */
     #[Route('/login', name: 'app_login')]
     public function index(): Response
     {

@@ -6,6 +6,14 @@ use App\Repository\ArticleCommandeRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+/*
+Classe ArticleCommande:
+Cette classe permet de définir la quantité d'articles dans une commande.
+
+int quantite:               Quantité de cet article dans la commande
+?Articles fk_articles:      Objet article référencé dans la commande
+?Commandes fk_commandes:    Objet commande contenant l'article
+*/
 #[ORM\Entity(repositoryClass: ArticleCommandeRepository::class)]
 class ArticleCommande
 {

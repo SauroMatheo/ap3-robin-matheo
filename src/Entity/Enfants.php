@@ -7,6 +7,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+/*
+Classe Enfants:
+Définit les enfants des clients/utilisateurs. Demandé, probablement à des fins promotionnelles
+
+?int age:                           Age de l'enfant
+?Utilisateurs responsableLegal:     Essentiellement le client étant responsable de l'enfant
+*/
 #[ORM\Entity(repositoryClass: EnfantsRepository::class)]
 class Enfants
 {

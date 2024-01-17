@@ -10,7 +10,24 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 
+/*
+Classe Utilisateurs:
+Utilisateur/client du site. Suit le workflow Symfony.
 
+?string email:                          Courriel de l'utilisateur (max: 180 char)
+array roles:                            Rôles de l'utilisateur sur le site
+?string nom:                            Nom de famille de l'utilisateur (max: 50 char)
+?string prenom:                         Premier prénom de l'utilisateur (max: 50 char)
+?string adresse:                        Adresse complète de l'utilisateur (max: 255 char)
+?\DateTimeInterface date_de_naissance:  Date de naissance de l'utilisateur
+?\DateTimeInterface date_inscription:   Date d'inscription de l'utilisateur
+TODO: Éventuellement stocker l'âge du mot de passe
+Collection commandes:                   Ensemble des commandes de l'utilisateur
+?string tel:                            Numéro de téléphone (max: 20 char)
+Collection sports:                      Tous les sports auquel l'utilisateur est intéressé
+Collection lesEnfants:                  Tous les enfants sous la responsabilité de l'utilisateur
+?string password:                       Le mot de passe Hashé de l'utilisateur
+*/
 #[ORM\Entity(repositoryClass: UtilisateursRepository::class)]
 class Utilisateurs implements UserInterface, PasswordAuthenticatedUserInterface
 {

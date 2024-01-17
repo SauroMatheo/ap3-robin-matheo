@@ -7,6 +7,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+/*
+Classe Etats:
+L'ensemble des états dans laquelle une commande peut être classée
+
+?string nom:            Descriptif de l'état
+Collection commandes:   Ensemble des commandes dans cet état
+*/
 #[ORM\Entity(repositoryClass: EtatsRepository::class)]
 class Etats
 {

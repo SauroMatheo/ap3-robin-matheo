@@ -7,6 +7,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+/*
+Classe Magasins: (Déprécié)
+Un magasin est un lieu de vente physique. A revoir durant l'implémentation du Lot B.
+
+?string nom:            Nom du magasin
+?string adresse:        Adresse du magasin
+Collection stockages:   L'ensemble des stockages dédiés à ce point de vente
+*/
 #[ORM\Entity(repositoryClass: MagasinsRepository::class)]
 class Magasins
 {

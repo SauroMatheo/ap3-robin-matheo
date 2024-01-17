@@ -6,6 +6,14 @@ use App\Repository\StockageRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+/*
+Classe Stockage: (Déprécié)
+Abstraction d'une quantité d'un article dans un magasin. A revoir durant l'implémentation du LotB
+
+?int quantite:          Quantité d'un article
+?Articles fk_articles:  Article concerné
+?Magasins fk_magasins:  Magasin concerné
+*/
 #[ORM\Entity(repositoryClass: StockageRepository::class)]
 class Stockage
 {

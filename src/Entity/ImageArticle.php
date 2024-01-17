@@ -5,6 +5,13 @@ namespace App\Entity;
 use App\Repository\ImageArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+/*
+Classe ImageArticle:
+Simplement une classe définissant une image pour un article.
+
+?string lienImage:      Lien absolu de la ressource contenant l'image (limité à 255 char)
+?Articles lArticle:     Article possèdant l'image
+*/
 #[ORM\Entity(repositoryClass: ImageArticleRepository::class)]
 class ImageArticle
 {

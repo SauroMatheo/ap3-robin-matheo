@@ -8,6 +8,16 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+/*
+Classe Commandes:
+Commandes de l'utilisateur, d'un ou plusieurs articles
+
+?\DateTimeInterface date_commande:      Date de création de la commande
+?\DateTimeInterface date_reception:     Date de réception de la commande
+Collection articleCommandes:            Ensemble des lots d'articles
+?Utilisateurs fk_utilisateurs:          Utilisateur ayant créé la commande
+?Etats fk_etat:                         Etat de la commande (parmis les états possibles)
+*/
 #[ORM\Entity(repositoryClass: CommandesRepository::class)]
 class Commandes
 {

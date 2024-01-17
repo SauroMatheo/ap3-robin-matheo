@@ -8,6 +8,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProfilController extends AbstractController
 {
+    /**
+    * Page du profil.
+    * Actuellement sans utilité
+    */
     #[Route('/profil', name: 'app_profil')]
     public function index(): Response
     {

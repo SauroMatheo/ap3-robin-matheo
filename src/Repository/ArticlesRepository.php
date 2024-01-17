@@ -22,6 +22,8 @@ class ArticlesRepository extends ServiceEntityRepository
     }
 
    /**
+    * Limite le nombre de résultats d'articles.
+    * @param int $limit
     * @return Articles[] Returns an array of Articles objects
     */
    public function findLimit($limit): array
@@ -34,6 +36,10 @@ class ArticlesRepository extends ServiceEntityRepository
    }
 
     /**
+     * Permet de rechercher des articles en fonction de leur nom et rayon.
+     * Lorsqu'un paramètre est vide, il n'est pas pris en compte, pour faciliter l'utilisation.
+     * @param ?string $nom
+     * @param ?Rayons $rayon
     * @return Articles[] Returns an array of Articles objects
     */
     public function findSearch($nom, $rayon): array

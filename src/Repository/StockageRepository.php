@@ -22,6 +22,10 @@ class StockageRepository extends ServiceEntityRepository
     }
 
    /**
+    * **Déprécié**.
+    * Récupère les stocks "internet" à partir d'un id d'article.
+    * @deprecated
+    * @param int $id
     * @return Stockage[] Returns an array of Stockage objects
     */
    public function findByArticle($id): array

@@ -8,6 +8,20 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+/*
+Classe Articles:
+Un exemplaire d'article vendu dans le magasin.
+
+?string nom:                    Nom de l'article. Limité à 255 caractères
+?string description:            Description de l'article.
+?string prixuniht:              Prix Hort-Taxe de l'article, sous forme 12345678.12
+Collection stockages:           Ensemble de tous les stockages possèdant l'article
+Collection articleCommandes:    Récupère tous les liens avec les commandes concernant cet article
+?Rayons fk_rayons:              Rayon auquel appartient l'article
+Collection lessports:           Ensemble des sports auquel cet article appartient
+?Fournisseur leFournisseur:     Fournisseur de l'article
+Collection lesImages:           Ensemble des images de l'article
+*/
 #[ORM\Entity(repositoryClass: ArticlesRepository::class)]
 class Articles
 {

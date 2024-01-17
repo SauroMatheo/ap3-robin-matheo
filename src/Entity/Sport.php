@@ -8,6 +8,15 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+/*
+Classe Sport:
+Un sport, sservant à catégoriser des articles.
+
+?string nom:                Nom du sport (max: 255 char)
+?string description:        Description
+Collection utilisateurs:    Ensemble des utilisateurs ayant comme sport préféré celui-ci
+Collection lesarticles:     Ensemble des articles catégorisés par ce sport
+*/
 #[ORM\Entity(repositoryClass: SportRepository::class)]
 class Sport
 {

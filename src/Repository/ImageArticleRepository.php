@@ -22,6 +22,9 @@ class ImageArticleRepository extends ServiceEntityRepository
     }
 
     /**
+     * Récupère une quantité d'images limitée depuis un id d'article donné
+    * @param int $id
+    * @param int $limit
     * @return ImageArticle[] Returns an array of Articles objects
     */
     public function findImagesById($id, $limit): array

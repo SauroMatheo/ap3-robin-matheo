@@ -8,6 +8,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RegisterController extends AbstractController
 {
+    /**
+    * Page d'inscription
+    */
     #[Route('/register', name: 'app_register')]
     public function index(): Response
     {
