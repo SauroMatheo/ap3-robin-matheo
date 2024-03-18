@@ -1,5 +1,7 @@
 
 # README AP3 !
+*[Lien vers le rapport du projet](/rapport.pdf)*
+
 Il est nécessaire pour mettre en place l'environnement d'avoir quelques connaissances en SQL, et préparer la [documentation Symfony](https://symfony.com/doc/current/setup.html) en cas de pépin. J'encourage vivement de rechercher toute question n'étant pas spécifique à ce projet, afin d'éviter toute zone d'incertitude lors de l'installation et par soucis de garder ce guide concis. Le processus d'installation des logiciels ainsi que leur démarrage initial ne seront pas couverts.
 
 Pour commencer, il faut installer MySQL (8.0.12), avec si possible Workbench d’installé. MySQL et Workbench sont disponibles et facilement téléchargeables avec MySQL Installer Community edition, à [cette adresse](https://dev.mysql.com/downloads/installer/)
